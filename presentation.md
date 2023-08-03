@@ -99,3 +99,160 @@ data/results as part of a publication.
 # Exercises
 
 (link to separate page)
+
+---
+
+class: center, middle, inverse
+
+# Sharing and reusing
+
+---
+
+# Why software licenses matter
+
+- .emph[You find some great code or data] that you want to reuse for your own
+  publication (good for the original author: you will cite them and maybe other
+  people who cite you will cite them).
+
+- You need to .emph[modify the code] a little bit, or you remix the data a bit.
+
+- When it comes time to publish, you realize there is .emph[no license].
+
+
+### Now we have a problem:
+
+- You manage to **publish the paper without the software/data** but others cannot
+  build on your software and data and
+  you don't get as many citations as you could.
+- Or, you **cannot publish it at all** if the journal requires that papers should
+  come with data and software so that they are reproducible.
+
+---
+
+.left-column50[
+### Beginning of a project
+
+<img src="img/ai/field.png"
+     alt="Generated image of an empty field"
+     style="height: 250px;" />
+
+.cite[Midjourney, CC-BY-NC 4.0]
+
+- License does not seem important
+- Easy to change (*)
+- Work as if the code is public even though it still may be private
+- "Open core" approach: Core can
+  be open and on a public branch, unpublished code can be on a private
+  repository
+]
+
+.right-column50[
+### Later in the project
+
+<img src="img/hundertwasserhaus.jpg"
+     alt="Photo of Hunderwasserhaus in Vienna"
+     style="height: 250px;" />
+
+.cite[C.Stadler/Bwag, CC-BY-SA 4.0]
+
+- Can be important
+- Especially when combining codes or organizations
+- Difficult to change
+- Difficult to remove code that should not be published
+- Authors change affiliation
+]
+
+---
+
+## Is your work .emph[derivative work] or not?
+
+.left-column50[
+<img src="img/license-models.png"
+     alt="European Union Public Licence (EUPL): guidelines July 2021"
+     style="height: 400px;" />
+
+.cite[European Union Public Licence (EUPL): guidelines July 2021, <https://data.europa.eu/doi/10.2799/77160>]
+]
+
+.right-column50[
+- .emph[Derivative work]: You have started from an existing code and made changes to
+  it or if you incorporated an existing code into your code
+
+- You have started from scratch: .emph[not derivative work]
+]
+
+---
+
+# How do I add a license to my work?
+
+- Create a `LICENSE` file or `LICENSES/` folder in your project which will hold
+  [license texts](https://reuse.software/faq/#license-templates).
+- On top of each file add and adapt
+  the following header ([more examples](https://reuse.software/faq/)):
+  ```python
+  # SPDX-FileCopyrightText: 2023 Jane Doe <jane@example.com>
+  #
+  # SPDX-License-Identifier: MIT
+  ```
+- Add a [CITATION.cff file](https://citation-file-format.github.io/) (example later)
+
+Practical steps for making **changes to an existing project** (with a license
+that allows you to do so):
+- .emph[Fork] (copy) the project.
+- .emph[Summarize your changes] in file headers and bigger-picture changes in the README.
+- Some licenses are more .emph[permissive] (you can keep your changes private) but some licenses
+  require you to publish the changes (.emph[share-alike]).
+
+---
+
+# Make it persistent and citable
+
+- Add a [CITATION.cff](https://citation-file-format.github.io/) file:
+```yml
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Druskat
+    given-names: Stephan
+    orcid: https://orcid.org/1234-5678-9101-1121
+title: "My Research Software"
+version: 2.0.4
+doi: 10.5281/zenodo.1234
+date-released: 2021-08-11
+```
+
+- Get a [digital object identifier
+  (DOI)](https://en.wikipedia.org/wiki/Digital_object_identifier) for your code
+  [Zenodo](https://zenodo.org/) or similar.
+
+- [Software Heritage](https://www.softwareheritage.org/) and
+  [CodeMeta](https://codemeta.github.io/) exist as an alternative ecosystem
+  that is currently receiving some attention on a European level. Comparison
+  and links to converters can be found in
+  <https://zenodo.org/record/8086413>.
+
+---
+
+# Many tools understand CITATION.cff
+
+<img src="img/cite-this-repo.png"
+     alt="Screenshot of a GitHub repository when clicked on 'Cite this repository'"
+     style="width: 100%;" />
+
+---
+
+# Sharing and reusing - Great resources
+
+- [UiT research software licensing guide (draft)](https://research-software.uit.no/blog/2023-software-licensing-guide/)
+
+- Guide from the Aalto University in Finland: ["Opening your Software at Aalto University"](https://www.aalto.fi/en/open-science-and-research/opening-your-software-at-aalto-university)
+
+- [Joinup Licensing Assistant - Find and compare software licenses](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses)
+
+- [Joinup Licensing Assistant - Compatibility Checker](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-compatibility-checker)
+
+- [Social coding lesson material](https://coderefinery.github.io/social-coding/) by [CodeRefinery](https://coderefinery.org/)
+
+- [Citation File Format (CFF)](https://citation-file-format.github.io/)
+
+- [License Selector](https://ufal.github.io/public-license-selector/)

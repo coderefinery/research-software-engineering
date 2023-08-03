@@ -62,10 +62,9 @@
 
 ## Sharing and reusing
 
-https://research-software.uit.no/blog/2023-software-licensing-guide/
-
 - Why software licenses matter
 - When should I add a license?
+- Is your work derivative work or not?
 - How do I add a license to my work?
 - Make it persistent and citable
-- How about data?
+- Great resources
