@@ -5,7 +5,7 @@
 
 ## Overview
 
-- What is "research software"? (https://research-software.uit.no/blog/2023-software-licensing-guide/)
+- What is "research software"?
 - CodeRefinery
 - 6 most important topics (in the HPC context)
 - Exercises (separate repo)
