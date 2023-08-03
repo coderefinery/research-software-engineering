@@ -60,7 +60,11 @@ Text: CC-BY 4.0
 
 class: center, middle, inverse
 
-# You don't need to be a "proper software engineer" to produce research software
+# You don't need to be a
+
+# "proper software engineer"
+
+# to produce research software
 
 We consider **any code, script, notebook, or file, regardless of size**, as
 "research software" if it is needed to generate, visualize, or reproduce
