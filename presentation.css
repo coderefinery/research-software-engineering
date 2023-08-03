@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+.remark-slide-content h1 {
+  font-size: 3em;
+}
+
+.remark-slide-content h2 {
+  font-size: 2em;
+}
+
+.remark-slide-content h3 {
+  font-size: 1.6em;
+}
+
+.remark-slide-content p {
+  font-size: 1.2em;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 3.2em;
+  background: #272822;
+}
+
+.gray-background {
+  background: #e0e0e0;
+}
+
+.fat {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 1.8em;
+  color: #856190;
+}
+
+ul {
+  list-style-type: '-   ';
+}
+
+h1,
+h2,
+h3 {
+  color: #652F76;
+}
+
+a {
+  color: #3498db;
+}
+
+.inverse {
+  background: #272822;
+  color: #777872;
+}
+
+.inverse h1,
+.inverse h2 {
+  color: #a3e4d7;
+  line-height: 0.8em;
+}
+
+.background h1 {
+  color: #e8daef;
+}
+
+.left-column20 {
+  width: 20%;
+  float: left;
+}
+
+.left-column30 {
+  width: 30%;
+  float: left;
+}
+
+.left-column40 {
+  width: 40%;
+  float: left;
+}
+
+.left-column50 {
+  width: 50%;
+  float: left;
+}
+
+.left-column60 {
+  width: 60%;
+  float: left;
+}
+
+.left-column70 {
+  width: 70%;
+  float: left;
+}
+
+.left-column80 {
+  width: 80%;
+  float: left;
+}
+
+.right-column20 {
+  width: 20%;
+  float: right;
+}
+
+.right-column30 {
+  width: 30%;
+  float: right;
+}
+
+.right-column40 {
+  width: 40%;
+  float: right;
+}
+
+.right-column50 {
+  width: 50%;
+  float: right;
+}
+
+.right-column60 {
+  width: 60%;
+  float: right;
+}
+
+.right-column70 {
+  width: 70%;
+  float: right;
+}
+
+.right-column80 {
+  width: 80%;
+  float: right;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  font-size: 14px;
+  color: #505050;
+}
+
+.footnote:before {
+  content: "[";
+}
+
+.footnote:after {
+  content: "]";
+}
+
+.emph {
+  background-color: #c8deff;
+}
+
+.remark {
+  color: #8e44ad;
+  font-style: italic;
+}
+
+.quote {
+  color: #856190;
+  font-family: 'Kalam', cursive;
+  font-size: 1.2em;
+}
+
+.cite {
+  font-size: 14px;
+  color: #505050;
+}
+
+.cite:before {
+  content: "[";
+}
+
+.cite:after {
+  content: "]";
+}

@@ -1,72 +1,31 @@
-# Overview
+class: center, middle, gray-background
 
-- What is "research software"? (https://research-software.uit.no/blog/2023-software-licensing-guide/)
-- CodeRefinery
-- 6 most important topics (in the HPC context)
-- Exercises (separate repo)
+# Research software engineering for HPC
 
----
+## Radovan Bast ([fosstodon.org/@radovan](https://fosstodon.org/@radovan))
 
-# Version control
+### UiT The Arctic University of Norway
 
-- What it is (Git, GitHub, commits, branches, commit messages)
-- Motivation
-- Features
-- Collaboration through branches
-- Collaboration via forks
-- Code review
-- Where to start
+<img src="img/coderefinery.png" style="height: 140px;"/>
+&nbsp;
+<img src="img/rse-logo.png" style="height: 180px;"/>
+
+Text: CC-BY 4.0
 
 ---
 
-# Building code
+# About me
 
-- Overview of tools
-- Motivation for CMake
-- CMake demo
-- Detecting the environment
-- Finding and using dependencies
+.left-column30[
+<img src="img/avatar.jpg" style="width: 80%;"/>
+]
 
----
+.right-column70[
+- Theoretical chemist turned research software engineer.
 
-# Reproducibility and containers
+- I write research software and teach programming to researchers and lead the
+  [CodeRefinery project](https://coderefinery.org).
 
-- FAIR principles
-- HS slide
-- Directory structure
-- Tracking dependencies
-- Tracking computational steps
-- Recording environments ("it works on my machine")
-- Containers
-- ReproHacks and time travel
-
----
-
-# Automated testing
-
-- How automated testing looks in practice
-- Motivation
-- Unit tests and end-to-end tests
-- Where to start and how far to go
-
----
-
-# Documentation
-
-- Why?
-- Checklist
-- In-code
-- README
-- Building websites
-
----
-
-# Sharing and reusing
-
-https://research-software.uit.no/blog/2023-software-licensing-guide/
-
-- Why software licenses matter
-- When should I add a license?
-- How do I add a license to my work?
-- Make it persistent and citable
-- How about data?
+- I lead the [high-performance computing group](https://hpc.uit.no) and the
+  [research software engineering group](https://research-software.uit.no) at UiT.
+]
