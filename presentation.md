@@ -83,13 +83,13 @@ data/results as part of a publication.
 .left-column50[
 - Version control
 
-- Building code (CMake, HPC-specific part)
+- Documentation
 
 - Reproducibility and containers
 
-- Automated testing
+- Building code (CMake, HPC-specific part)
 
-- Documentation
+- Automated testing
 
 - Sharing and reusing
 ]
@@ -185,11 +185,10 @@ if temperature > 15:
 .left-column30[
 - Useful for those who want/need to understand and modify the code
 
-- Useful if it describes .emph[why] the piece of code is there
+- Docstrings can be useful both for .emph[developers and users of a function]
 ]
 
 .right-column60[
-Docstrings can be useful both for .emph[developers and users of a function]:
 ```python
 def kelvin_to_celsius(temp_k: float) -> float:
     """
@@ -206,7 +205,9 @@ def kelvin_to_celsius(temp_k: float) -> float:
         temperature in Celsius
     """
     assert temp_k >= 0.0, "ERROR: negative T_K"
+
     temp_c = temp_k - 273.15
+
     return temp_c
 
 
