@@ -108,6 +108,161 @@ data/results as part of a publication.
 
 class: center, middle, inverse
 
+# Documentation
+
+# Why? &#128151;&#9993;&#65039; to your future self
+
+Inspirations:
+- https://coderefinery.github.io/documentation/
+- https://github.com/samumantha/documentation_example
+
+---
+
+# Why? &#128151;&#9993;&#65039; to your future self
+
+- You will probably use your code in the future and may forget details.
+
+- You may want others to use your code (almost impossible without documentation).
+
+- You may want others to contribute to the code.
+
+- Time is limited - let the documentation answer FAQs.
+
+---
+
+# Checklist
+
+- .emph[Purpose]
+- Authors
+- License
+- .emph[Recommended citation]
+- .emph[Copy-paste-able example to get started]
+- Dependencies and their versions or version ranges
+- Installation instructions
+- Tutorials covering key functionality
+- Reference documentation (e.g. API) covering all functionality
+- How do you want to be asked questions (mailing list or forum or chat or issue tracker)
+- Possibly a FAQ section
+- Contribution guide
+
+See also:
+- [JOSS review checklist](https://joss.readthedocs.io/en/latest/review_checklist.html)
+
+---
+
+Not very useful (more commentary than comment):
+```python
+# now we check if temperature is larger than -50
+if temperature > -50:
+    print("ERROR: temperature is too low")
+```
+
+More useful (explaining .emph[why]):
+```python
+# we regard temperatures below -50 degrees as measurement errors
+if temperature > -50:
+    print("ERROR: temperature is too low")
+```
+
+Keeping zombie code "just in case" (rather use version control):
+```python
+# do not run this code!
+# if temperature > 0:
+#     print("It is warm")
+```
+
+Emulating version control:
+```python
+# threshold changed on August 5, 2013, from 0 to 15
+if temperature > 15:
+    print("It is warm")
+```
+
+---
+
+# In-code documentation
+
+.left-column30[
+- Useful for those who want/need to understand and modify the code
+
+- Useful if it describes .emph[why] the piece of code is there
+]
+
+.right-column60[
+Docstrings can be useful both for .emph[developers and users of a function]:
+```python
+def kelvin_to_celsius(temp_k: float) -> float:
+    """
+    Converts temperature in Kelvin to Celsius.
+
+    Parameters
+    ----------
+    temp_k : float
+        temperature in Kelvin
+
+    Returns
+    -------
+    temp_c : float
+        temperature in Celsius
+    """
+    assert temp_k >= 0.0, "ERROR: negative T_K"
+    temp_c = temp_k - 273.15
+    return temp_c
+
+
+print(kelvin_to_celsius.__doc__)
+```
+]
+
+---
+
+# Often a README is enough
+
+... usually the first thing someone visiting your repository sees -> **first impression**
+
+A minimal README should include:
+
+- A descriptive project title
+- Motivation (why the project exists) and basics
+- Installation / How to setup
+- .emph[Copy-pastable quick start example]
+- Usage reference (if not elsewhere)
+- Recommended citation if someone uses it
+- Other related tools ("see also")
+
+---
+
+# When projects grow out of a README
+
+- Write documentation in
+  [Markdown (.md)](https://en.wikipedia.org/wiki/Markdown)
+  or
+  [reStructuredText (.rst)](https://en.wikipedia.org/wiki/ReStructuredText)
+  or
+  [R Markdown (.Rmd)](https://rmarkdown.rstudio.com/)
+
+- In the .emph[same repository] as the code -> version control and **reproducibility**
+
+- Use one of many tools to build HTML out of md/rst/Rmd:
+  [Sphinx](sphinx-doc.org),
+  [Zola](https://www.getzola.org/), [Jekyll](https://jekyllrb.com/),
+  [Hugo](https://gohugo.io/), RStudio, [knitr](https://yihui.org/knitr/),
+  [bookdown](https://bookdown.org/),
+  [blogdown](https://bookdown.org/yihui/blogdown/), ...
+
+- Deploy the generated HTML to [GitHub Pages](https://pages.github.com/) or
+  [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/)
+
+
+## Examples
+
+- [All CodeRefinery lessons](https://coderefinery.org/lessons/from-coderefinery/)
+- <https://github.com/networkx/networkx>
+
+---
+
+class: center, middle, inverse
+
 # Sharing and reusing
 
 ---

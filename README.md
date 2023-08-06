@@ -55,9 +55,9 @@
 
 - Why?
 - Checklist
-- In-code
-- README
-- Building websites
+- In-code documentation
+- Often a README is enough
+- When projects grow out of a README
 
 
 ## Sharing and reusing
