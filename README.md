@@ -22,13 +22,13 @@
 - Where to start
 
 
-## Building code
+## Documentation
 
-- Overview of tools
-- Motivation for CMake
-- CMake demo
-- Detecting the environment
-- Finding and using dependencies
+- Why?
+- Checklist
+- In-code documentation
+- Often a README is enough
+- When projects grow out of a README
 
 
 ## Reproducibility and containers
@@ -43,21 +43,21 @@
 - ReproHacks and time travel
 
 
+## Building code
+
+- Overview of tools
+- Motivation for CMake
+- CMake demo
+- Detecting the environment
+- Finding and using dependencies
+
+
 ## Automated testing
 
 - How automated testing looks in practice
 - Motivation
 - Unit tests and end-to-end tests
 - Where to start and how far to go
-
-
-## Documentation
-
-- Why?
-- Checklist
-- In-code documentation
-- Often a README is enough
-- When projects grow out of a README
 
 
 ## Sharing and reusing
