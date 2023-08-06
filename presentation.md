@@ -106,15 +106,15 @@ data/results as part of a publication.
 
 ---
 
-class: center, middle, inverse
+class: middle, inverse
 
 # Documentation
 
-# Why? &#128151;&#9993;&#65039; to your future self
+# &#128151;&#9993;&#65039; to your future self
 
-Inspirations:
-- https://coderefinery.github.io/documentation/
-- https://github.com/samumantha/documentation_example
+Inspiration and where to find more:
+- [Documentation lesson material](https://coderefinery.github.io/documentation/) by [CodeRefinery](https://coderefinery.org/)
+- [Talk material "Documenting code" by S. Wittke](https://github.com/samumantha/documentation_example)
 
 ---
 
@@ -133,16 +133,16 @@ Inspirations:
 # Checklist
 
 - .emph[Purpose]
-- Authors
-- License
-- .emph[Recommended citation]
-- .emph[Copy-paste-able example to get started]
-- Dependencies and their versions or version ranges
 - Installation instructions
+- Dependencies and their versions or version ranges
+- .emph[Copy-paste-able example to get started]
 - Tutorials covering key functionality
 - Reference documentation (e.g. API) covering all functionality
 - How do you want to be asked questions (mailing list or forum or chat or issue tracker)
 - Possibly a FAQ section
+- Authors
+- .emph[Recommended citation]
+- License
 - Contribution guide
 
 See also:
@@ -173,7 +173,7 @@ Keeping zombie code "just in case" (rather use version control):
 
 Emulating version control:
 ```python
-# threshold changed on August 5, 2013, from 0 to 15
+# somebody: threshold changed from 0 to 15 on August 5, 2013
 if temperature > 15:
     print("It is warm")
 ```
@@ -216,19 +216,46 @@ print(kelvin_to_celsius.__doc__)
 
 ---
 
-# Often a README is enough
+## Often a README is enough (first impression!)
 
-... usually the first thing someone visiting your repository sees -> **first impression**
+.left-column50[
+```markdown
+# Project title
 
-A minimal README should include:
+## Purpose
 
-- A descriptive project title
-- Motivation (why the project exists) and basics
-- Installation / How to setup
-- .emph[Copy-pastable quick start example]
-- Usage reference (if not elsewhere)
-- Recommended citation if someone uses it
-- Other related tools ("see also")
+Motivation (why the project exists)
+and basics.
+
+## Installation
+
+How to setup. Dependencies and their
+versions.
+
+## Getting started
+
+Copy-pastable quick start example.
+Tutorials covering key functionality.
+
+## Usage reference
+
+...
+
+## Recommended citation
+
+...
+
+## License
+
+...
+```
+]
+
+.right-column50[
+<img src="img/readme.png"
+     alt="Screenshot of a GitHub repo that renders README.md"
+     style="width: 100%" />
+]
 
 ---
 
@@ -261,9 +288,15 @@ A minimal README should include:
 
 ---
 
-class: center, middle, inverse
+class: middle, inverse
 
 # Sharing and reusing
+
+# &#127803;
+
+Inspiration and where to find more:
+- [UiT research software licensing guide (draft)](https://research-software.uit.no/blog/2023-software-licensing-guide/)
+- [Social coding lesson material](https://coderefinery.github.io/social-coding/) by [CodeRefinery](https://coderefinery.org/)
 
 ---
 
