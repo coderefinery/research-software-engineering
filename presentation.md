@@ -197,9 +197,23 @@ Inspiration and where to find more:
 
 ---
 
-## Where to start?
+.left-column50[
+### Where to start? Simple personal projects
 
-.left-column40[
+- Start with just the `main` branch
+- Later use branches for unfinished/untested ideas
+- Use tags to mark important milestones (`phd-thesis-submitted`, `published-manuscript`)
+- Better too many commits than too few
+- Better imperfect commits than no commits
+
+### Projects with few persons
+
+- Write-protect the `main` branch
+- New idea/feature: new branch
+- Use code review: changes are reviewed and discussed before they are merged
+]
+
+.right-column50[
 - [Install and configure Git](https://coderefinery.github.io/installation/)
 
 - In 3 commands from nothing to first commit:
@@ -212,21 +226,6 @@ $ git commit
 - Go through [CodeRefinery](https://coderefinery.org/) lessons ([Git
   intro](https://coderefinery.github.io/git-intro/) and [Collaborative
   Git](https://coderefinery.github.io/git-collaborative/))
-]
-
-.right-column50[
-### Simple personal projects
-
-- Start with just the `main` branch
-- Later use branches for unfinished/untested ideas
-- Use tags to mark important milestones (`phd-thesis-submitted`, `published-manuscript`)
-- Better too many commits than too few
-
-### Projects with few persons
-
-- Write-protect the `main` branch
-- New idea/feature: new branch
-- Use code review: changes are reviewed and discussed before they are merged
 ]
 
 ---
