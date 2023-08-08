@@ -415,6 +415,51 @@ Tutorials covering key functionality.
 
 class: middle, inverse
 
+# Reproducibility and containers
+
+# &#128230;
+
+Inspiration and where to find more:
+- [Reproducible research](https://coderefinery.github.io/reproducible-research/)
+
+---
+
+(5 slides will be added here)
+
+---
+
+class: middle, inverse
+
+# Building code
+
+# &#129521;
+
+Inspiration and where to find more:
+- [CMake introduction and hands-on workshop](https://coderefinery.github.io/cmake-workshop/)
+
+---
+
+(5 slides will be added here)
+
+---
+
+class: middle, inverse
+
+# Automated testing
+
+# &#129302; &#128680; &#9989;
+
+Inspiration and where to find more:
+- [Software testing lesson material](https://coderefinery.github.io/testing/)
+
+---
+
+(5 slides will be added here)
+
+---
+
+class: middle, inverse
+
 # Sharing and reusing
 
 # &#127803;
