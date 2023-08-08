@@ -13,13 +13,13 @@
 
 ## Version control
 
-- What it is (Git, GitHub, commits, branches, commit messages)
-- Motivation
-- Features
-- Collaboration through branches
-- Collaboration via forks
+- Motivation for version control
+- Commits: keeping track of changes
+- Features: roll-back, branching, merging, collaboration
+- Reproducibility
+- Collaboration through branches or forks
 - Code review
-- Where to start
+- Where to start?
 
 
 ## Documentation

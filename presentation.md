@@ -108,6 +108,131 @@ data/results as part of a publication.
 
 class: middle, inverse
 
+# Version control
+
+# &#128220;
+
+Inspiration and where to find more:
+- [Introduction to version control with Git](https://coderefinery.github.io/git-intro/)
+- [Collaborative distributed version control](https://coderefinery.github.io/git-collaborative/)
+- [Collaborating and sharing using GitHub without command line](https://coderefinery.github.io/github-without-command-line/)
+
+---
+
+## Motivation: Version control is an answer to these questions:
+
+.quote["It broke ... hopefully I have a working version somewhere?"]
+
+.quote["Can you please send me the latest version?"]
+
+.quote["Where is the latest version?"]
+
+.quote["Which version are you using?"]
+
+.quote["Which version have the authors used in the paper I am trying to reproduce?"]
+
+.quote["Found a bug! Since when was it there?"]
+
+.quote["I am sure it used to work. When did it change?"]
+
+---
+
+## Commits: keeping track of changes ([example repository](https://github.com/coderefinery/git-intro/commits/main/))
+
+.left-column40[
+<img src="img/git-log-terminal.png"
+     alt="Screenshot of a git log in terminal"
+     style="width: 100%">
+]
+
+.right-column60[
+<img src="img/git-log-github.png"
+     alt="Screenshot of a git log on GitHub"
+     style="width: 100%">
+]
+
+---
+
+## Features: roll-back, branching, merging, collaboration
+
+.left-column50[
+- .emph[Roll-back]: you can always go back to a previous version and compare
+
+- .emph[Branching and merging]: work on different ideas at the same time
+
+- .emph[Collaboration]: review, compare, share, discuss
+
+- [Example network graph](https://github.com/coderefinery/git-intro/network)
+]
+
+.right-column50[
+<img src="img/octopus.jpeg"
+     alt="Branching explained with an octopus"
+     style="width: 100%">
+
+.cite[Source: <https://twitter.com/jay_gee/status/703360688618536960>]
+]
+
+---
+
+## Reproducibility ([browse this example online](https://github.com/networkx/networkx/blame/main/networkx/algorithms/boundary.py))
+
+<img src="img/git-annotate.png"
+     alt="Example of a git-annotated code with code and history side-by-side"
+     style="width: 100%">
+
+---
+
+## Collaboration through branches or forks
+
+<img src="img/fork.png"
+     alt="Image that shows the difference of cloning and forking"
+     style="width: 100%">
+
+---
+
+# Code review
+
+(1-2 slides explaining what code review is, why, and how)
+
+---
+
+## Where to start?
+
+.left-column40[
+- [Install and configure Git](https://coderefinery.github.io/installation/)
+
+- In 3 commands from nothing to first commit:
+```bash
+$ git init
+$ git add myscript.py
+$ git commit
+```
+
+- Go through [CodeRefinery](https://coderefinery.org/) lessons ([Git
+  intro](https://coderefinery.github.io/git-intro/) and [Collaborative
+  Git](https://coderefinery.github.io/git-collaborative/))
+]
+
+.right-column50[
+### Simple personal projects
+
+- Start with just the `main` branch
+- Later use branches for unfinished/untested ideas
+- Use tags to mark important milestones (`phd-thesis-submitted`, `published-manuscript`)
+- Better too many commits than too few
+
+### Projects with few persons
+
+- Write-protect the `main` branch
+- New idea/feature: new branch
+- Use code review: changes are reviewed and discussed before they are merged
+]
+
+---
+
+class: middle, inverse
+
 # Documentation
 
 # &#128151;&#9993;&#65039; to your future self
