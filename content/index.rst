@@ -24,6 +24,7 @@ This site contains exercises accompanying the presentation slides:
    containers
    cmake
    automated-testing
+   sharing-reusing
 
 
 .. toctree::
