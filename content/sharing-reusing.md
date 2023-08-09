@@ -84,7 +84,7 @@ Optional:
 - Add a GitHub Action to automatically validate it on each repository change using [cff-validator](https://github.com/marketplace/actions/cff-validator).
 
 ````{solution}
-**Validating `CITATION.cff`**
+**Validating CITATION.cff**
 
 First install `cffconvert` into a Python virtual environment or a Conda environment:
 ```console
