@@ -11,7 +11,8 @@ on: [push, pull_request]
 
 jobs:
   build-and-deploy:
-    name: Build and gh-pages
+    name: Build and deploy to gh-pages
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       # https://github.com/marketplace/actions/checkout
