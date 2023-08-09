@@ -9,7 +9,7 @@ This site contains exercises accompanying the presentation slides:
 
    There are too many exercises here to complete in 1.5 hours. Please start
    with the ones that are **most relevant to you and your work** and try to
-   complete one or two of them.  If you have time, you can continue with the
+   complete one or two topics.  If you have time, you can continue with the
    remaining exercises.  All exercises come with cheatsheets and solutions.
 
    If you have the possibility to work in pairs, please do so.
