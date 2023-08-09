@@ -47,7 +47,7 @@
 - ReproHacks and time travel
 
 
-## Building code
+## Building code with CMake
 
 - Overview of tools
 - Motivation for CMake

@@ -87,7 +87,7 @@ data/results as part of a publication.
 
 - Reproducibility and containers
 
-- Building code (CMake, HPC-specific part)
+- Building code with CMake (HPC-specific part)
 
 - Automated testing
 
@@ -430,7 +430,7 @@ Inspiration and where to find more:
 
 class: middle, inverse
 
-# Building code
+# Building code with CMake
 
 # &#129521;
 
