@@ -139,6 +139,171 @@ Which solution did you like better? Discuss the pros and cons.
 
 ---
 
+## Exercise CMake-3: Detecting your environment
+
+Sometimes we need to write code that performs different operations based on
+compile-time constants.
+Like in this example (`example.cpp`):
+
+```{literalinclude} cmake/os-dependent/example.cpp
+:language: c++
+```
+
+We can do this with the following `CMakeLists.txt`:
+
+```{literalinclude} cmake/os-dependent/CMakeLists.txt
+:language: cmake
+```
+
+We achieved this with a combination of host system
+introspection and the `target_compile_definitions` command.
+
+A common customization is to apply processor-specific compiler flags. We can
+gain such information on the host system with the built-in
+`cmake_host_system_information` command.
+
+Another thing that is common and convenient is to have a single file containing
+all these compile-time constants, rather than passing them to preprocessor.
+This can be achieved by having a *scaffold* file and then letting CMake
+configure it with `configure_file` after discovering the values for all the
+necessary compile-time constants.
+
+Here is an example source file (`example.cpp`):
+
+```{literalinclude} cmake/configure-file/problem/example.cpp
+:language: c++
+```
+
+The file `config.h` does not exist, it will be generated at configure time
+from `config-template.h`:
+
+```{literalinclude} cmake/configure-file/problem/config-template.h
+:language: c
+```
+
+Here is the `CMakeLists.txt` which takes care of introspection and also
+generates the file `config.h`:
+
+```{literalinclude} cmake/configure-file/problem/CMakeLists.txt
+:language: cmake
+:emphasize-lines: 29
+```
+
+Your goal is to adapt the above example
+and make it possible to get the compiler and compiler version into the
+output of your code:
+
+```{literalinclude} cmake/configure-file/problem/example.cpp
+:language: c++
+:emphasize-lines: 15-16
+```
+
+Hints:
+- You will only need to uncomment these and only have to modify `configure-template.h`.
+- You will not need to modify `CMakeLists.txt`.
+- The relevant variable names are `CMAKE_CXX_COMPILER_ID` and `CMAKE_CXX_COMPILER_VERSION` (or replace `CXX` by `C` or `Fortran`).
+
+**What else to record when configuring?** Here are some ideas:
+- Code version and/or Git hash
+- Compiler versions
+- Compiler flags
+- Compile-time definitions
+- Library versions
+- Some environment variables
+
+Discuss how they can be useful for you and others running your code.
+
+---
+
+## Exercise CMake-4: Finding and using dependencies
+
+CMake offers a family of commands to find artifacts installed on your system:
+
+- `find_file` to retrieve the full path to a file.
+- `find_library` to find a library, shared or static.
+- `find_package` to find and load settings from an external project.
+- `find_path` to find the directory containing a file.
+- `find_program` to find an executable.
+
+For this exercise, choose one of the examples below which is closest to your
+work and most relevant for your code.
+
+1. Try to compile and run.
+2. Browse the online documentation of the `Find<PackageName>.cmake` module (e.g. `FindOpenMP.cmake`).
+3. Try to compile with verbosity (`cmake --build build -- VERBOSE=1`) and verify how the imported target modified
+   compile flags and definitions.
+4. **Bonus**: Try to adapt what we learned to an example which uses the BLAS or
+   LAPACK library or your favorite library.
+
+````{tabs}
+   ```{group-tab} OpenMP (C++)
+      Source file (`example.cpp`):
+
+      ```{literalinclude} cmake/find-package/omp/cxx/example.cpp
+      :language: c++
+      ```
+
+      And the `CMakeLists.txt` file:
+
+      ```{literalinclude} cmake/find-package/omp/cxx/CMakeLists.txt
+      :language: cmake
+      ```
+   ```
+
+   ```{group-tab} OpenMP (Fortran)
+      Source file (`example.f90`):
+
+      ```{literalinclude} cmake/find-package/omp/fortran/example.f90
+      :language: fortran
+      ```
+
+      And the `CMakeLists.txt` file:
+
+      ```{literalinclude} cmake/find-package/omp/fortran/CMakeLists.txt
+      :language: cmake
+      ```
+   ```
+
+   ```{group-tab} MPI (C++)
+      Source file (`example.cpp`):
+
+      ```{literalinclude} cmake/find-package/mpi/cxx/example.cpp
+      :language: c++
+      ```
+
+      And the `CMakeLists.txt` file:
+
+      ```{literalinclude} cmake/find-package/mpi/cxx/CMakeLists.txt
+      :language: cmake
+      ```
+   ```
+
+   ```{group-tab} MPI (Fortran)
+      Source file (`example.f90`):
+
+      ```{literalinclude} cmake/find-package/mpi/fortran/example.f90
+      :language: fortran
+      ```
+
+      And the `CMakeLists.txt` file:
+
+      ```{literalinclude} cmake/find-package/mpi/fortran/CMakeLists.txt
+      :language: cmake
+      ```
+   ```
+````
+
+---
+
+## Exercise CMake-5: CMake-ify your own project
+
+This may not be easy and you will probably need help from a TA or the
+instructor but is a great exercise and we can try to do this together.  You can
+find good tips in ["CMake introduction and hands-on
+workshop"](https://coderefinery.github.io/cmake-workshop/).
+
+---
+
 ## Where to find more examples and exercises
 
 Curious about more CMake? As a next step, we recommend to work through the
