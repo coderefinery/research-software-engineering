@@ -298,6 +298,17 @@ image however no longer exists. But luckily we still have the definition file
 
 ## Exercise Reproducibility-5: Building a container on GitHub and running it on a cluster
 
+You can build a container on GitHub (using GitHub Actions) or GitLab (using
+GitLab CI) and host the image it on GitHub/GitLab.  This has the following
+advantages:
+- You don't need to host it yourself
+- But the image stays close to its sources and is not on a different service
+- Anybody can inspect the recipe and how it was built
+- Every time you make a change to the recipe, it builds a new image
+
+If you want to try this out, you can take this repository as starting point and
+inspiration: <https://github.com/bast/singularity-latex>
+
 ---
 
 ## Exercise Reproducibility-6: Containerizing your own code
