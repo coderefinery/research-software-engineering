@@ -24,3 +24,26 @@ Instructions are work in progress but the big picture is:
 ---
 
 ## Exercise Git-and-documentation-4: Improve the README of your project
+
+In this exercise we will try to add a README to your project. If you have one
+already, we will try to improve it by following the checklist from the
+[presentation
+slides](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/research-software-engineering/main/presentation.md/):
+
+- **Purpose**
+- **Installation instructions**
+- **Dependencies and their versions or version ranges**
+- **Copy-paste-able example to get started**
+- Tutorials covering key functionality
+- Reference documentation (e.g. API) covering all functionality
+- How do you want to be asked questions (mailing list or forum or chat or issue tracker)
+- Possibly a FAQ section
+- Authors
+- **Recommended citation**
+- License
+- Contribution guide
+
+See also:
+- [JOSS review checklist](https://joss.readthedocs.io/en/latest/review_checklist.html)
+
+If you are unsure where to start, start with one of the items in bold.
