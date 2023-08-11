@@ -301,3 +301,16 @@ image however no longer exists. But luckily we still have the definition file
 ---
 
 ## Exercise Reproducibility-6: Containerizing your own code
+
+This may not be easy and you will probably need help from a TA or the
+instructor but is a great exercise and we can try to do this together.
+
+A good test is to build the container on one computer and try to run it on
+another one.  A big benefit of this exercise is that it will clarify to you
+which dependencies your code really has because you have to document them -
+there are no shortcuts.
+
+A good starting point is the [Apptainer User
+Guide](https://apptainer.org/docs/user/latest/), particularly the documentation
+about [definition
+files](https://apptainer.org/docs/user/latest/definition_files.html).
