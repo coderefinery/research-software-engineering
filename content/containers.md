@@ -6,7 +6,7 @@ These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) l
 If you want to try to build a container but you need to install
 [SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
 on your laptop and this is only easy to do on a Linux laptop and less easy on
-other operating sysems:
+other operating systems:
 - Reproducibility-3
 
 If you have access to a cluster:
@@ -289,6 +289,82 @@ image however no longer exists. But luckily we still have the definition file
 ---
 
 ## Exercise Reproducibility-3: Build a container and run it on a cluster
+
+If you want to try to build a container but you need to install
+[SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
+on your laptop and this is only easy to do on a Linux laptop and less easy on
+other operating systems.
+
+We will start with a relatively simple example definition file (`hello.def`).
+All it does is to install cmake on top of a Ubuntu 22.04 Docker image:
+```{literalinclude} containers/hello.def
+:language: docker
+```
+
+You can try to build it on your laptop:
+```console
+$ sudo singularity build hello.sif hello.def
+```
+
+Then copy the generated `hello.sif` to the cluster and run it with the following script:
+```{literalinclude} containers/run-hello.sh
+:language: bash
+```
+
+This is the relevant output (observe the highlighted lines and discuss what this means):
+```{literalinclude} containers/hello.out
+:linenos:
+:emphasize-lines: 8, 20, 25, 32, 46, 51
+```
+
+**Here is another example** of [a project](https://github.com/mfumagalli/ngsTools)
+that I had to containerize recently because it did not build on latest
+compilers (`ngstools.def`):
+```{literalinclude} containers/ngstools.def
+:language: docker
+```
+
+You can try to build it similarly to the example above and then run it with the following script:
+```{literalinclude} containers/run-ngstools.sh
+:language: bash
+```
+
+It should produce an output which contains:
+```
+==> Input Arguments:
+    geno: (null)
+    probs: false
+    log_scale: false
+    n_ind: 0
+    n_sites: 0
+    tot_sites: 0
+    labels: (null) (WITHOUT header)
+    positions: (null) (WITHOUT header)
+    call_geno: false
+    N_thresh: 0.000000
+    call_thresh: 0.000000
+    pairwise_del: false
+    avg_nuc_dist: false
+    evol_model: None
+    geno_indep: false
+    n_boot_rep: 0
+    boot_block_size: 1
+    out: (null)
+    n_threads: 1
+    verbose: 1
+    seed: 1691765155
+    version: 1.0.9 (Aug 11 2023 @ 14:39:11)
+
+
+=====
+ERROR: [parse_cmd_args] genotype input file (--geno) missing!
+=====
+
+    : Success
+```
+
+We are happy to see "Success". The "ERROR" does not bother us here. This is because
+we did not provide any input files.
 
 ---
 
