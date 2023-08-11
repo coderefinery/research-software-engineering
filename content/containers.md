@@ -313,7 +313,6 @@ Then copy the generated `hello.sif` to the cluster and run it with the following
 
 This is the relevant output (observe the highlighted lines and discuss what this means):
 ```{literalinclude} containers/hello.out
-:linenos:
 :emphasize-lines: 8, 20, 25, 32, 46, 51
 ```
 
