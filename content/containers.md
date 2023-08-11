@@ -294,6 +294,50 @@ image however no longer exists. But luckily we still have the definition file
 
 ## Exercise Reproducibility-4: Download a container image and run it on a cluster
 
+In this exercise we will try something fun: create an isolated, reproducible,
+and documented Conda environment without even installing Conda using the
+container image from <https://github.com/bast/singularity-conda>.
+
+We will use the following defining the Conda environment that we wish to have
+(`environment.yml`):
+```{literalinclude} containers/environment.yml
+:language: yaml
+```
+
+Together with the following Python script (`example.py`):
+```{literalinclude} containers/example.py
+:language: python
+```
+
+This job script (`run-conda.sh`) will download the container image and use it
+to set up a local Conda environment:
+```{literalinclude} containers/run-conda.sh
+:language: bash
+```
+
+```console
+$ sbatch run-conda.sh
+```
+
+And now track the generated `conda.out` where we are interested to see what the
+Python version is and what the versions of the install Pandas and SciPy
+libraries are.  The run can take few minutes since it needs to install
+dependencies into a generated directory called `environment/`:
+```
+... lots of output ...
+Transaction finished
+Python 3.9.17
+pandas version: 1.5.3
+scipy version: 1.11.1
+```
+
+But if you run the script again, it will complete in seconds:
+```
+Python 3.9.17
+pandas version: 1.5.3
+scipy version: 1.11.1
+```
+
 ---
 
 ## Exercise Reproducibility-5: Building a container on GitHub and running it on a cluster
