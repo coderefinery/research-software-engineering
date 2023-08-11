@@ -2,3 +2,4 @@ venv/
 _build/
 sphinx
 sphinx.def
+*.sif
