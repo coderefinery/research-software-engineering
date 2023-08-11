@@ -25,9 +25,266 @@ If you have your own code project and want to try to containerize it:
 
 ## Exercise Reproducibility-1: Time-capsule of dependencies
 
+Imagine the following situation: five students (A, B, C, D, E) wrote a code
+that depends on a couple of libraries.  They uploaded their projects to GitHub.
+We now travel **3 years into the future** and find their GitHub repositories and
+try to re-run their code before adapting it.
+
+- Which version do you expect to be easiest to re-run? Why?
+- What problems do you anticipate in each solution?
+
+`````{tabs}
+   ````{group-tab} Conda
+     **A**:
+     You find a couple of library imports across the code but that's it.
+
+     **B**:
+     The README file lists which libraries were used but does not mention
+     any versions.
+
+     **C**:
+     You find a `environment.yml` file with:
+     ```
+     name: student-project
+     channels:
+       - conda-forge
+     dependencies:
+       - scipy
+       - numpy
+       - sympy
+       - click
+       - python
+       - pip
+       - pip:
+         - git+https://github.com/someuser/someproject.git@master
+         - git+https://github.com/anotheruser/anotherproject.git@master
+     ```
+
+     **D**:
+     You find a `environment.yml` file with:
+     ```
+     name: student-project
+     channels:
+       - conda-forge
+     dependencies:
+       - scipy=1.3.1
+       - numpy=1.16.4
+       - sympy=1.4
+       - click=7.0
+       - python=3.8
+       - pip
+       - pip:
+         - git+https://github.com/someuser/someproject.git@d7b2c7e
+         - git+https://github.com/anotheruser/anotherproject.git@sometag
+     ```
+
+     **E**:
+     You find a `environment.yml` file with:
+     ```
+     name: student-project
+     channels:
+       - conda-forge
+     dependencies:
+       - scipy=1.3.1
+       - numpy=1.16.4
+       - sympy=1.4
+       - click=7.0
+       - python=3.8
+       - someproject=1.2.3
+       - anotherproject=2.3.4
+     ```
+   ````
+
+   ````{group-tab} Python virtualenv
+     **A**:
+     You find a couple of library imports across the code but that's it.
+
+     **B**:
+     The README file lists which libraries were used but does not mention
+     any versions.
+
+     **C**:
+     You find a `requirements.txt` file with:
+     ```
+     scipy
+     numpy
+     sympy
+     click
+     python
+     git+https://github.com/someuser/someproject.git@master
+     git+https://github.com/anotheruser/anotherproject.git@master
+     ```
+
+     **D**:
+     You find a `requirements.txt` file with:
+     ```
+     scipy==1.3.1
+     numpy==1.16.4
+     sympy==1.4
+     click==7.0
+     python==3.8
+     git+https://github.com/someuser/someproject.git@d7b2c7e
+     git+https://github.com/anotheruser/anotherproject.git@sometag
+     ```
+
+     **E**:
+     You find a `requirements.txt` file with:
+     ```
+     scipy==1.3.1
+     numpy==1.16.4
+     sympy==1.4
+     click==7.0
+     python==3.8
+     someproject==1.2.3
+     anotherproject==2.3.4
+     ```
+   ````
+
+   ````{group-tab} R
+     **A**:
+     You find a couple of `library()` or `require()` calls across the code but that's it.
+
+     **B**:
+     The README file lists which libraries were used but does not mention
+     any versions.
+
+     **C**:
+     You find a [DESCRIPTION file](https://r-pkgs.org/description.html) which contains:
+     ```
+     Imports:
+         dplyr,
+         tidyr
+     ```
+     In addition you find these:
+     ```r
+     remotes::install_github("someuser/someproject@master")
+     remotes::install_github("anotheruser/anotherproject@master")
+     ```
+
+     **D**:
+     You find a [DESCRIPTION file](https://r-pkgs.org/description.html) which contains:
+     ```
+     Imports:
+         dplyr (== 1.0.0),
+         tidyr (== 1.1.0)
+     ```
+     In addition you find these:
+     ```r
+     remotes::install_github("someuser/someproject@d7b2c7e")
+     remotes::install_github("anotheruser/anotherproject@sometag")
+     ```
+
+     **E**:
+     You find a [DESCRIPTION file](https://r-pkgs.org/description.html) which contains:
+     ```
+     Imports:
+         dplyr (== 1.0.0),
+         tidyr (== 1.1.0),
+         someproject (== 1.2.3),
+         anotherproject (== 2.3.4)
+     ```
+   ````
+`````
+
+```{solution}
+**A**: It will be tedious to collect the dependencies one by one. And after
+the tedious process you will still not know which versions they have used.
+
+**B**: If there is no standard file to look for and look at and it might
+become very difficult for to create the software environment required to
+run the software. But at least we know the list of libraries. But we don't
+know the versions.
+
+**C**: Having a standard file listing dependencies is definitely better
+than nothing. However, if the versions are not specified, you or someone
+else might run into problems with dependencies, deprecated features,
+changes in package APIs, etc.
+
+**D** and **E**: In both these cases exact versions of all dependencies are
+specified and one can recreate the software environment required for the
+project. One problem with the dependencies that come from GitHub is that
+they might have disappeared (what if their authors deleted these
+repositories?).
+
+**E** is slightly preferable because version numbers are easier to understand than Git
+commit hashes or Git tags.
+```
+
 ---
 
 ## Exercise Reproducibility-2: Time-travel with containers
+
+Imagine the following situation: A researcher has written and published their research code which
+requires a number of libraries and system dependencies. They ran their code
+on a Linux computer (Ubuntu). One very nice thing they did was to publish
+also a container image with all dependencies included, as well as the
+definition file (below) to create the container image.
+
+Now we travel 3 years into the future and want to reuse their work and adapt
+it for our data. The container registry where they uploaded the container
+image however no longer exists. But luckily we still have the definition file
+(below)! From this we should be able to create a new container image.
+
+- Can you anticipate problems using the definitions file 3 years after its creation?
+  Which possible problems can you point out?
+- Discuss possible take-aways for creating more reusable containers.
+
+``````{tabs}
+  `````{tab} Python project using virtual environment
+    ```{literalinclude} containers/bad-example-python.def
+    :language: docker
+    :linenos:
+    ```
+
+    ````{solution}
+    - Line 2: "ubuntu:latest" will mean something different 3 years in future.
+    - Lines 11-12: The compiler gcc and the library libgomp1 will have evolved.
+    - Line 30: The container uses requirements.txt to build the virtual environment but we don't see
+      here what libraries the code depends on.
+    - Line 33: Data is copied in from the hard disk of the person who created it. Hopefully we can find the data somewhere.
+    - Line 35: The library fancylib has been built outside the container and copied in but we don't see here how it was done.
+    - Python version will be different then and hopefully the code still runs then.
+    - Singularity/Apptainer will have also evolved by then. Hopefully this definition file then still works.
+    - No help text.
+    - No contact address to ask more questions about this file.
+    - (Can you find more? Please contribute more points.)
+
+    ```{literalinclude} containers/bad-example-python.def
+    :language: docker
+    :linenos:
+    :emphasize-lines: 2, 11-12, 30, 33, 35
+    ```
+    ````
+  `````
+
+  `````{tab} C++ project
+    This definition files has potential problems 3 years later. Further down on
+    this page we show a better and real version.
+
+    ```{literalinclude} containers/bad-example-cxx.def
+    :language: docker
+    :linenos:
+    ```
+
+    ````{solution}
+    - Line 2: "ubuntu:latest" will mean something different 3 years in future.
+    - Lines 9: The libraries will have evolved.
+    - Line 11: We clone a Git repository recursively and that repository might evolve until we build the container image the next time.
+      here what libraries the code depends on.
+    - Line 18: The library fancylib has been built outside the container and copied in but we don't see here how it was done.
+    - Singularity/Apptainer will have also evolved by then. Hopefully this definition file then still works.
+    - No help text.
+    - No contact address to ask more questions about this file.
+    - (Can you find more? Please contribute more points.)
+
+    ```{literalinclude} containers/bad-example-cxx.def
+    :language: docker
+    :linenos:
+    :emphasize-lines: 2, 9, 11, 18
+    ```
+    ````
+  `````
+``````
 
 ---
 
