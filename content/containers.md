@@ -3,7 +3,10 @@
 These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) lessons
 [Reproducible research and FAIR data](https://coderefinery.github.io/reproducible-research/).
 
-If you want to try to build a container but you need to install Singularity/Apptainer on your laptop:
+If you want to try to build a container but you need to install
+[SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
+on your laptop and this is only easy to do on a Linux laptop and less easy on
+other operating sysems:
 - Reproducibility-3
 
 If you have access to a cluster:
