@@ -35,7 +35,7 @@ If you have your own code project and want to try to containerize it:
 
 ---
 
-## Exercise Reproducibility-4: Running an MPI container on a cluster
+## Exercise Reproducibility-4: Download a container image and run it on a cluster
 
 ---
 
