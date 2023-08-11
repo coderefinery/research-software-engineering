@@ -19,8 +19,7 @@ This site contains exercises accompanying the presentation slides:
    :maxdepth: 1
    :caption: Exercises
 
-   version-control
-   documentation
+   version-control-documentation
    containers
    cmake
    automated-testing
