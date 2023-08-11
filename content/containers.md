@@ -12,13 +12,14 @@ other operating sysems:
 If you have access to a cluster:
 - Reproducibility-3
 - Reproducibility-4
+- Reproducibility-5
 
 If you want exercises where you don't need to type or install anything but "only" think and discuss:
 - Reproducibility-1
 - Reproducibility-2
 
 If you have your own code project and want to try to containerize it:
-- Reproducibility-5
+- Reproducibility-6
 
 ---
 
@@ -38,4 +39,8 @@ If you have your own code project and want to try to containerize it:
 
 ---
 
-## Exercise Reproducibility-5: Containerizing your own code
+## Exercise Reproducibility-5: Building a container on GitHub and running it on a cluster
+
+---
+
+## Exercise Reproducibility-6: Containerizing your own code
