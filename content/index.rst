@@ -22,7 +22,6 @@ This site contains exercises accompanying the presentation slides:
    version-control-documentation
    containers
    cmake
-   automated-testing
    sharing-reusing
 
 
