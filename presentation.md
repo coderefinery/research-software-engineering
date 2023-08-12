@@ -94,8 +94,12 @@ data/results as part of a publication.
 - Sharing and reusing
 ]
 
-.right-column50[
-(figure: job of an RSE - archaeology and time travel?)
+.right-column40[
+<img src="img/ai/jones.png"
+     alt="Generated image of an archaeologist in front of a code wall in a crypt"
+     style="height: 300px;" />
+
+.cite[Midjourney, CC-BY-NC 4.0]
 ]
 
 ---
