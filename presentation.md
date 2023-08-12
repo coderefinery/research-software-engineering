@@ -100,9 +100,17 @@ data/results as part of a publication.
 
 ---
 
-# Exercises
+# [Exercises](https://coderefinery.github.io/research-software-engineering/)
 
-(link to separate page)
+We will revisit these during the exercise session:
+
+- [Version control and documentation](https://coderefinery.github.io/research-software-engineering/version-control-documentation/)
+
+- [Reproducibility and containers](https://coderefinery.github.io/research-software-engineering/containers/)
+
+- [Building code with CMake](https://coderefinery.github.io/research-software-engineering/cmake/)
+
+- [Sharing and reusing](https://coderefinery.github.io/research-software-engineering/sharing-reusing/)
 
 ---
 
