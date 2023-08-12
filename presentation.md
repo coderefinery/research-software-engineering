@@ -218,16 +218,16 @@ Inspiration and where to find more:
 
 ## Talking about code
 
+.quote[Clone the code, go to the file "src/util.rs", and search for "time_iso8601". Oh! But make sure you use the version from August 2023.]
+
+
+### Or I can send you a [permalink](https://github.com/NordicHPC/sonar/blob/75daafc86582feb06299d6a47c82112f39888152/src/util.rs#L40-L44)
+
 <img src="img/code-portion.png"
      alt="Screen-shot of a code portion"
      style="width: 100%">
 
 .cite[https://github.com/NordicHPC/sonar/blob/75daafc86582feb06299d6a47c82112f39888152/src/util.rs#L40-L44]
-
-
-### Alternative
-
-.quote[Clone the code, go to the file "src/util.rs", and search for "time_iso8601". Oh! But make sure you use the version from August 2023]
 
 ---
 
