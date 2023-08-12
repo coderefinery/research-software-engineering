@@ -662,7 +662,51 @@ Inspiration and where to find more:
 
 ---
 
-(5 slides will be added here)
+# Technical possibilities
+
+Any programming language has tools/libraries to perform:
+
+- .emph[Unit tests]: test a function or a module and
+  compare function result to a reference
+
+- .emph[End-to-end test]: run the whole code and compare result to a reference
+
+- .emph[Coverage analysis]: Give overview of which parts of the code are tested
+
+- The test (set) can be run .emph[automatically] on [GitHub
+  Actions](https://github.com/features/actions) or [GitLab
+  CI](https://docs.gitlab.com/ee/ci/) after every Git commit
+
+---
+
+# Motivation
+
+- .emph[Less scary to change code]: tests will tell you whether something broke
+
+- Unit tests can .emph[guide towards better structured code]: complicated code is more difficult to test
+
+- .emph[Easier for new people] to join
+
+- Easier for somebody to .emph[revive an old code]
+
+---
+
+# Where to start
+
+- A simple script or notebook probably does not need an automated test
+
+
+### If you have nothing yet
+
+- Start with an end-to-end test
+- Describe in words how *you* check whether the code still works
+- Translate the words into a script
+- Run the script automatically on every code change
+
+
+### If you want to start with unit-testing
+
+- You want to rewrite a function? Start adding a unit test right there first.
 
 ---
 
