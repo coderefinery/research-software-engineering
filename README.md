@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8242054.svg)](https://doi.org/10.5281/zenodo.8242054)
+
 # Research software engineering ("CodeRefinery in 1 hour")
 
 "CodeRefinery in 1 hour" - What are good tools and practices in research software engineering?
