@@ -892,6 +892,8 @@ date-released: 2021-08-11
 
 # Conclusions/recommendations
 
+## It's about communicating!
+
 - Track your code with Git
 
 - Help each other with reviewing code: great learning
