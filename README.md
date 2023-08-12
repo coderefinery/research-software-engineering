@@ -14,8 +14,8 @@
 
 - What is "research software"?
 - CodeRefinery
-- 6 most important topics (in the HPC context)
-- Exercises (separate repo)
+- 6 most important topics? (in the HPC context)
+- Exercises (separate webpage)
 
 
 ## Version control
@@ -24,6 +24,7 @@
 - Commits: keeping track of changes
 - Features: roll-back, branching, merging, collaboration
 - Reproducibility
+- Talking about code
 - Collaboration through branches or forks
 - Code review
 - Where to start?
@@ -40,31 +41,26 @@
 
 ## Reproducibility and containers
 
-- FAIR principles
-- HS slide
-- Directory structure
-- Tracking dependencies
-- Tracking computational steps
-- Recording environments ("it works on my machine")
+- 6 helpful steps
+- It all starts with a good directory structure ...
+- Recording dependencies
 - Containers
-- ReproHacks and time travel
+- Recording computational steps
 
 
 ## Building code with CMake
 
-- Overview of tools
-- Motivation for CMake
-- CMake demo
-- Detecting the environment
-- Finding and using dependencies
+- Why is Make not enough?
+- CMake is not a build system
+- How do CMakeLists.txt files look?
+- Why CMake?
 
 
 ## Automated testing
 
-- How automated testing looks in practice
+- Technical possibilities
 - Motivation
-- Unit tests and end-to-end tests
-- Where to start and how far to go
+- Where to start
 
 
 ## Sharing and reusing
