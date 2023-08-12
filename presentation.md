@@ -664,7 +664,99 @@ Inspiration and where to find more:
 
 ---
 
-(5 slides will be added here)
+## Why is Make not enough?
+
+- Make only knows about targets and dependencies
+- Make does not know which compiler (options) we want and which environment we are on
+- We need to tell Make what depends on what (.emph[Fortran 90+ projects])
+- Modular projects become clunky to maintain
+
+
+## What is CMake?
+
+- Cross-platform (this is the C in CMake, not the C language)
+- Open-source
+- Manages the build process in a compiler-independent manner
+- Provides a family of tools and a domain-specific language
+
+---
+
+## CMake is not a build system
+
+It generates files for build systems.
+
+.left-column50[
+<img src="img/build-systems.svg"
+     alt="Generated image of an empty field"
+     style="height: 270px;" />
+]
+
+.right-column50[
+```bash
+  Green Hills MULTI
+* Unix Makefiles
+  Ninja
+  Ninja Multi-Config
+  Watcom WMake
+  CodeBlocks - Ninja
+  CodeBlocks - Unix Makefiles
+  CodeLite - Ninja
+  CodeLite - Unix Makefiles
+  Eclipse CDT4 - Ninja
+  Eclipse CDT4 - Unix Makefiles
+  Kate - Ninja
+  Kate - Unix Makefiles
+  Sublime Text 2 - Ninja
+  Sublime Text 2 - Unix Makefiles
+```
+]
+
+---
+
+## How do CMakeLists.txt files look?
+
+```cmake
+cmake_minimum_required(VERSION 3.14)
+
+project(example LANGUAGES CXX)
+
+add_executable(hello hello.cpp)
+
+add_library(greeting
+  SHARED
+    greeting.cpp
+    greeting.hpp
+  )
+
+find_package(MPI REQUIRED COMPONENTS CXX)
+
+target_link_libraries(hello
+  PRIVATE
+    greeting
+    MPI::MPI_CXX
+  )
+```
+
+---
+
+## Why CMake?
+
+- Excellent support for .emph[Fortran, C, C++], and
+  mixed-language projects.
+
+- Separation of source and build path: .emph[Out-of-source compilation].
+
+- Really .emph[cross-platform] (Linux, Mac, Windows, AIX, iOS,
+  Android).
+
+- .emph[Modular code] development: Excellent support for multi-component and multi-library projects.
+
+- Tools: .emph[Testing and packaging framework] with CTest and CPack.
+
+- Good at .emph[discovering environment, libraries, and packages].
+
+- Non-intrusive: All you need is a `CMakeLists.txt`. CMake won't mind if other
+  build tools are there as well in the project.
 
 ---
 
