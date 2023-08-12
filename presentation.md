@@ -460,10 +460,178 @@ class: middle, inverse
 
 Inspiration and where to find more:
 - [Reproducible research](https://coderefinery.github.io/reproducible-research/)
+- [The Turing Way: Guide for Reproducible Research](https://the-turing-way.netlify.app/reproducible-research/reproducible-research.html)
 
 ---
 
-(5 slides will be added here)
+<img src="img/reproducible-research.jpg"
+     alt="6 helpful steps for reproducible research: file organization, naming, documentation, version control, stabilizing computing environment, publishing cresearch outputs"
+     style="height: 550px;"/>
+
+.cite[Heidi Seibold, CC-BY 4.0, https://twitter.com/HeidiBaya/status/1579385587865649153]
+
+---
+
+# It all starts with a good directory structure ...
+
+```
+project_name/
+├── README.md             # overview of the project
+├── data/                 # data files used in the project
+│   ├── README.md         # describes where data came from
+│   └── sub-folder/       # may contain subdirectories
+├── processed_data/       # intermediate files from the analysis
+├── manuscript/           # manuscript describing the results
+├── results/              # results of the analysis (data, tables, figures)
+├── src/                  # contains all code in the project
+│   ├── LICENSE           # license for your code
+│   ├── requirements.txt  # software requirements and dependencies
+│   └── ...
+└── doc/                  # documentation for your project
+    ├── index.rst
+    └── ...
+```
+
+.quote[Lottery factor: If you win the lottery and leave research today, will others be able to continue your work?]
+
+---
+
+class: middle, center, inverse
+
+# "it works on my machine &#129335;"
+
+---
+
+## Recording dependencies
+
+.left-column50[
+**Conda, Anaconda, pip, virtualenv, Pipenv, pyenv, Poetry, rye, requirements.txt,
+environment.yml, renv**, ...
+- Define dependencies
+- .emph[Communicate dependencies]
+- Install these dependencies
+- Record the versions
+- Isolate environments
+- Provide tools and services to share packages
+
+Isolated environments help you make sure
+that you .emph[know your dependencies]!
+]
+
+.right-column50[
+<img src="img/kitchen/libraries.png"
+     alt="Kitchen with few open cooking books"
+     style="height: 250px;" />
+
+.cite[Midjourney, CC-BY-NC 4.0]
+
+Kitchen analogy
+- Software <-> recipe
+- Data <-> ingredients
+- Libraries <-> cooking books/blogs
+]
+
+---
+
+.left-column50[
+<img src="img/docker-meme.jpg"
+     alt="He said, then we will ship your machine. And that's how Docker was born."
+     style="height: 450px;" />
+
+.cite[From [reddit](https://www.reddit.com/r/ProgrammerHumor/comments/cw58z7/it_works_on_my_machine/)]
+]
+
+.right-column50[
+Kitchen analogy
+- Our codes/scripts <-> cooking recipes
+
+- Container definition files <-> like a blueprint to build a kitchen with all
+  utensils in which the recipe can be prepared.
+
+- Container images <-> example kitchens
+
+- Containers <-> identical factory-built mobile food truck kitchens
+]
+
+---
+
+## Container: "operating system inside a file"
+
+Example [SingularityCE](https://sylabs.io/docs/)/[Apptainer](https://apptainer.org) definition file ("recipe"):
+```docker
+Bootstrap: docker
+From: ubuntu:20.04
+
+%post
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update -y
+
+    apt install -y git build-essential pkg-config
+    apt install -y libz-dev libbz2-dev liblzma-dev
+    apt install -y libcurl4-openssl-dev libssl-dev libgsl-dev
+
+    git clone https://github.com/someuser/sometool.git
+    cd sometool
+
+    make
+
+%runscript
+    export PATH=/sometool/bin:$PATH
+
+    $@
+```
+
+Popular implementations: [Docker](https://www.docker.com/),
+[SingularityCE](https://sylabs.io/docs/) (popular on HPC)
+[Apptainer](https://apptainer.org) (popular on HPC, fork of
+Singularity), [podman](https://podman.io/)
+
+---
+
+## Container use cases
+
+- Create a time capsule and share it on [Zenodo](https://zenodo.org/) (or similar)
+
+- Document and .emph[communicate dependencies]
+
+- Have a common platform to test the code
+
+- Easier to move it to other Linux computers/clusters
+
+- Forward "travel in time": if cluster has too old software
+
+- Backwards "travel in time": if software is no longer maintained and does not build on laptop/cluster
+
+
+### Typical critique points
+
+- "not the proper way to build"
+- performance
+- composability
+
+---
+
+## Recording computational steps
+
+.left-column60[
+We need a way to record and .emph[communicate] computational steps
+
+- **README** (steps written out "in words")
+
+- **Scripts** (typically shell scripts)
+
+- **Notebooks** (Jupyter or R Markdown)
+
+- **Workflows** (Snakemake, doit, ...)
+]
+
+.right-column40[
+<img src="img/kitchen/busy.png"
+     alt="Busy kitchen"
+     style="height: 250px;" />
+
+.cite[Midjourney, CC-BY-NC 4.0]
+]
 
 ---
 
