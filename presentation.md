@@ -218,7 +218,16 @@ Inspiration and where to find more:
 
 ## Talking about code
 
-(1 slides showing how we can refer to code portions with versions)
+<img src="img/code-portion.png"
+     alt="Screen-shot of a code portion"
+     style="width: 100%">
+
+.cite[https://github.com/NordicHPC/sonar/blob/75daafc86582feb06299d6a47c82112f39888152/src/util.rs#L40-L44]
+
+
+### Alternative
+
+.quote[Clone the code, go to the file "src/util.rs", and search for "time_iso8601". Oh! But make sure you use the version from August 2023]
 
 ---
 
@@ -232,7 +241,15 @@ Inspiration and where to find more:
 
 ## Code review
 
-(1-2 slides explaining what code review is, why, and how)
+<img src="img/code-review.png"
+     alt="Screen-shot of a GitHub Network graph"
+     style="width: 80%">
+
+- Changes are reviewed before they are merged
+
+- Main motivation for code review is the .emph[collaborative learning]
+
+- Also: better code quality
 
 ---
 
