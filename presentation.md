@@ -479,6 +479,7 @@ Inspiration and where to find more:
 - [Reproducible research](https://coderefinery.github.io/reproducible-research/)
 - [The Turing Way: Guide for Reproducible Research](https://the-turing-way.netlify.app/reproducible-research/reproducible-research.html)
 - [Ten simple rules for writing Dockerfiles for reproducible data science](https://doi.org/10.1371/journal.pcbi.1008316)
+- [Computing environment reproducibility](https://doi.org/10.5281/zenodo.8089471)
 
 ---
 
