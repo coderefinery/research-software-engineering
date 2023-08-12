@@ -4,7 +4,8 @@
 
 "CodeRefinery in 1 hour" - What are good tools and practices in research software engineering?
 
-- [Presentation slides](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/research-software-engineering/main/presentation.md/)
+- [Latest presentation slides](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/research-software-engineering/main/presentation.md/)
+- [Published presentation slides](https://doi.org/10.5281/zenodo.8242054)
 - [Exercise repository](https://coderefinery.github.io/research-software-engineering/)
 
 ---
