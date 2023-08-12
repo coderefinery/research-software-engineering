@@ -461,6 +461,7 @@ class: middle, inverse
 Inspiration and where to find more:
 - [Reproducible research](https://coderefinery.github.io/reproducible-research/)
 - [The Turing Way: Guide for Reproducible Research](https://the-turing-way.netlify.app/reproducible-research/reproducible-research.html)
+- [Ten simple rules for writing Dockerfiles for reproducible data science](https://doi.org/10.1371/journal.pcbi.1008316)
 
 ---
 
@@ -825,3 +826,21 @@ date-released: 2021-08-11
 - [Citation File Format (CFF)](https://citation-file-format.github.io/)
 
 - [License Selector](https://ufal.github.io/public-license-selector/)
+
+---
+
+# Conclusions/recommendations
+
+- Track your code with Git
+
+- Help each other with reviewing code: great learning
+
+- Documentation: start with a README in the same Git repo
+
+- Document your dependencies and computational steps
+
+- When adding tests, start with an end-to-end test
+
+- Make your code/script/notebook citable and give it a license
+
+- Join a [CodeRefinery](https://coderefinery.org/) workshop
