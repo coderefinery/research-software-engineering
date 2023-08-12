@@ -74,7 +74,28 @@ data/results as part of a publication.
 
 # CodeRefinery
 
-(slide about CodeRefinery)
+**Typical format**: 6 half-days, [twice per
+year](https://coderefinery.org/workshops/upcoming/), online, free,
+live-streamed, recorded, archived asynchronous Q&A in collaborative document
+.left-column50[
+- Version control
+- Collaboration using Git
+- Testing
+- Documentation
+- Notebooks
+- Modular code development
+- Reproducible research
+- Software licensing
+- How to share and publish code
+- How to organize a code project
+- **...**
+]
+
+.right-column50[
+**Next workshop** September 19-21 and 26-28, 2023, register here: https://coderefinery.github.io/2023-09-19-workshop/
+
+**Lessons and recordings:** https://coderefinery.org/lessons/
+]
 
 ---
 
