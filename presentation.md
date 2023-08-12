@@ -216,6 +216,12 @@ Inspiration and where to find more:
 
 ---
 
+## Talking about code
+
+(1 slides showing how we can refer to code portions with versions)
+
+---
+
 ## Collaboration through branches or forks
 
 <img src="img/fork.png"
@@ -224,7 +230,7 @@ Inspiration and where to find more:
 
 ---
 
-# Code review
+## Code review
 
 (1-2 slides explaining what code review is, why, and how)
 
