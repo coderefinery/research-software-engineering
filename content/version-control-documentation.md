@@ -175,13 +175,32 @@ be online!
 
 ## Exercise Git-and-documentation-3: Practice code review with somebody else
 
-```{instructor-note}
-Work in progress. Steps will be explained and screenshots added.
-```
-
-- Students work in pairs of two
-- They create an example repository on GitHub or share one of their recent repositories
-- The other student sends a pull request with a small improvement
+- Students work in pairs of two.
+- One student creates an example repository on GitHub.
+- The student who created (and owns) the example repository adds the other
+  student as "collaborator" ("Settings" -> "Collaborators and teams").
+- The other student clones the repository from GitHub to their laptop.
+- Before doing any changes create a new branch with a descriptive name:
+  ```console
+  $ git branch descriptive-name
+  $ git checkout descriptive-name
+  $ git status
+  ```
+- Now make a change to the example project and commit your change to the
+  new branch:
+  ```console
+  $ git add somefile.txt
+  $ git commit -v "descriptive message"
+  ```
+- Push the branch (replace "descriptive-name") to the GitHub repository:
+  ```console
+  $ git push origin descriptive-name
+  ```
+- Now you can create a new pull request on GitHub from the new branch
+  towards the default branch (main or master). Discuss and review the
+  change together in words but also using the web interface: browse the
+  change, use the discussion thread, try to suggest changes, and finally
+  merge the change and then observe "Insights" -> "Network".
 
 ---
 
