@@ -28,7 +28,8 @@ choice of license.
 
 ## Exercise Sharing-2: Licensing situations
 
-Consider some common licensing situations:
+Consider some common licensing situations. If you are part of an exercise
+group, discuss these with others:
 1. What is the StackOverflow license for code you copy and paste?
 2. A journal requests that you release your software during publication. You have
    copied a portion of the code from another package, which you have forgotten.
@@ -55,8 +56,9 @@ Consider some common licensing situations:
 
 ## Exercise Sharing-3: Create a CITATION.cff file for your project
 
-Our goal here is to create a `CITATION.cff` file similar to this one and to add it
-to our project:
+Our goal here is to create a `CITATION.cff` file similar to this one and to
+add it to our project (for more information please see
+<https://citation-file-format.github.io/>):
 ```yaml
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
@@ -70,14 +72,13 @@ doi: 10.5281/zenodo.1234
 date-released: 2021-08-11
 ```
 
-For more information about `CITATION.cff` files please see <https://citation-file-format.github.io/>.
-
 Steps:
 - You can use this nice page that initializes a file for you based on a form: <https://citation-file-format.github.io/cff-initializer-javascript/>
 - Or start from the example above and adapt it.
-- If your project is on GitHub, push the new file to the repository (here link
-  to instructions on how to do that). Then you can verify that you see a "Cite
-  this repository" on GitHub.
+- If your project is on GitHub, push the new file to the repository (if you
+  are unsure how, please first look at the exercise section
+  {ref}`version-control-documentation`).  Then you can verify that you see a
+  "Cite this repository" on GitHub.
 
 Optional:
 - Validate the `CITATION.cff` file using [cffconvert](https://github.com/citation-file-format/cffconvert).

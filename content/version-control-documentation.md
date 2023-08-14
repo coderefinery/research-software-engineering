@@ -1,3 +1,5 @@
+(version-control-documentation)=
+
 # Version control and documentation
 
 These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) lessons:
