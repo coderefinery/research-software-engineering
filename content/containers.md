@@ -3,7 +3,8 @@
 These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) lessons
 [Reproducible research and FAIR data](https://coderefinery.github.io/reproducible-research/).
 
-If you want to try to build a container but you need to install
+This is a fun exercise if you want to try to build a container yourself.
+However, for this you need to install
 [SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
 on your laptop and this is only easy to do on a Linux laptop and less easy on
 other operating systems:
@@ -12,6 +13,10 @@ other operating systems:
 If you have access to a cluster:
 - Reproducibility-3
 - Reproducibility-4
+- Reproducibility-5
+
+If you want to try to run a container on a cluster but you don't want to or
+cannot build it yourself:
 - Reproducibility-5
 
 If you want exercises where you don't need to type or install anything but "only" think and discuss:
@@ -25,7 +30,7 @@ If you have your own code project and want to try to containerize it:
 
 ## Exercise Reproducibility-1: Time-capsule of dependencies
 
-Imagine the following situation: five students (A, B, C, D, E) wrote a code
+Imagine the following situation: Five students (A, B, C, D, E) wrote a code
 that depends on a couple of libraries.  They uploaded their projects to GitHub.
 We now travel **3 years into the future** and find their GitHub repositories and
 try to re-run their code before adapting it.
@@ -222,11 +227,11 @@ definition file (below) to create the container image.
 
 Now we travel 3 years into the future and want to reuse their work and adapt
 it for our data. The container registry where they uploaded the container
-image however no longer exists. But luckily we still have the definition file
-(below)! From this we should be able to create a new container image.
+image however no longer exists. But luckily (!) we still have the definition
+file (below). From this we should be able to create a new container image.
 
-- Can you anticipate problems using the definitions file 3 years after its creation?
-  Which possible problems can you point out?
+- Can you anticipate problems using the definition file here 3 years after its
+  creation? Which possible problems can you point out?
 - Discuss possible take-aways for creating more reusable containers.
 
 ``````{tabs}
@@ -290,10 +295,11 @@ image however no longer exists. But luckily we still have the definition file
 
 ## Exercise Reproducibility-3: Build a container and run it on a cluster
 
-If you want to try to build a container but you need to install
+This is a fun exercise if you want to try to build a container yourself.
+However, for this you need to install
 [SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
 on your laptop and this is only easy to do on a Linux laptop and less easy on
-other operating systems.
+other operating systems:
 
 We will start with a relatively simple example definition file (`hello.def`).
 All it does is to install cmake on top of a Ubuntu 22.04 Docker image:
@@ -362,8 +368,8 @@ ERROR: [parse_cmd_args] genotype input file (--geno) missing!
     : Success
 ```
 
-We are happy to see "Success". The "ERROR" does not bother us here. This is because
-we did not provide any input files.
+We are happy to see "Success". The "ERROR" does not bother us here (this is
+because we did not provide any input files).
 
 ---
 
@@ -373,8 +379,8 @@ In this exercise we will try something fun: create an isolated, reproducible,
 and documented Conda environment without even installing Conda using the
 container image from <https://github.com/bast/singularity-conda>.
 
-We will use the following defining the Conda environment that we wish to have
-(`environment.yml`):
+We will use the following file which defines the Conda environment that we
+wish to have (`environment.yml`):
 ```{literalinclude} containers/environment.yml
 :language: yaml
 ```
