@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharing and reusing &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Building code with CMake" href="../cmake/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../version-control-documentation/">Version control and documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../containers/">Reproducibility and containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake/">Building code with CMake</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sharing and reusing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-sharing-1-what-constitutes-derivative-work">Exercise Sharing-1: What constitutes derivative work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-sharing-2-licensing-situations">Exercise Sharing-2: Licensing situations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-sharing-3-create-a-citation-cff-file-for-your-project">Exercise Sharing-3: Create a CITATION.cff file for your project</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/core/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sharing and reusing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/sharing-reusing.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sharing-and-reusing">
+<h1>Sharing and reusing<a class="headerlink" href="#sharing-and-reusing" title="Permalink to this heading"></a></h1>
+<p>These exercises are adapted from the <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> lesson
+<a class="reference external" href="https://coderefinery.github.io/social-coding/">“Social coding”</a>.</p>
+<section id="exercise-sharing-1-what-constitutes-derivative-work">
+<h2>Exercise Sharing-1: What constitutes derivative work?<a class="headerlink" href="#exercise-sharing-1-what-constitutes-derivative-work" title="Permalink to this heading"></a></h2>
+<p>Which of these are derivative works?  Also reflect/discuss how this affects the
+choice of license.</p>
+<ul class="simple">
+<li><p>A. Download some code from a website and add on to it</p></li>
+<li><p>B. Download some code and use one of the functions in your code</p></li>
+<li><p>C. Changing code you got from somewhere</p></li>
+<li><p>D. Extending code you got from somewhere</p></li>
+<li><p>E. Completely rewriting code you got from somewhere</p></li>
+<li><p>F. Rewriting code to a different programming language</p></li>
+<li><p>G. Linking to libraries (static or dynamic), plug-ins, and drivers</p></li>
+<li><p>H. Clean room design (somebody explains you the code but you have never seen it)</p></li>
+<li><p>I. You read a paper, understand algorithm, write own code</p></li>
+</ul>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p>Derivative work: A-F</p></li>
+<li><p>Not derivative work: G-I</p></li>
+<li><p>E and F: This depends on how you do it, see “clean room design”.</p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-sharing-2-licensing-situations">
+<h2>Exercise Sharing-2: Licensing situations<a class="headerlink" href="#exercise-sharing-2-licensing-situations" title="Permalink to this heading"></a></h2>
+<p>Consider some common licensing situations. If you are part of an exercise
+group, discuss these with others:</p>
+<ol class="arabic simple">
+<li><p>What is the StackOverflow license for code you copy and paste?</p></li>
+<li><p>A journal requests that you release your software during publication. You have
+copied a portion of the code from another package, which you have forgotten.
+Can you satisfy the journal’s request?</p></li>
+<li><p>You want to fix a bug in a project someone else has released, but there is no license. What risks are there?</p></li>
+<li><p>How would you ask someone to add a license?</p></li>
+<li><p>You incorporate MIT, GPL, and BSD3 licensed code into your project. What possible licenses can you pick for your project?</p></li>
+<li><p>You do the same as above but add in another license that looks strong copyleft. What possible licenses can you use now?</p></li>
+<li><p>Do licenses apply if you don’t distribute your code? Why or why not?</p></li>
+<li><p>Which licenses are most/least attractive for companies with proprietary software?</p></li>
+</ol>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<ol class="arabic simple">
+<li><p>As indicated <a class="reference external" href="https://stackoverflow.com/help/licensing">here</a>, all publicly accessible user contributions are licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike</a> license. See Stackoverflow <a class="reference external" href="https://stackoverflow.com/legal/terms-of-service/public#licensing">Terms of service</a> for more detailed information.</p></li>
+<li><p>“Standard” licensing rules apply. So in this case, you would need to remove the portion of code you have copied from another package before being able to release your software.</p></li>
+<li><p>By default you are no authorized to use the content of a repository when there is no license. And derivative work is also not possible by default. Other risks: it may not be clear whether you can use and distribute (publish) the bugfixed code. For the repo owners it may not be clear whether they can use and distributed the bugfixed code. However, the authors may have forgotten to add a license so we suggest you to contact the authors (e.g. make an issue) and ask whether they are willing to add a license.</p></li>
+<li><p>As mentionned in 3., the easiest is to fill an issue and explain the reasons why you would like to use this software (or update it).</p></li>
+<li><p>Combining software with different licenses can be tricky and it is important to understand compatibilities (or lack of compatibilities) of the various licenses. GPL license is the most protective (BSD and MIT are quite permissive) so for the resulting combined software you could use a GPL license. However, re-licensing may not be necessary.</p></li>
+<li><p>Derivative work would need to be shared under this strong copyleft license (e.g. AGPL or GPL), unless the components are only plugins or libraries.</p></li>
+<li><p>If you keep your code for yourself, you may think you do not need a license. However, remember that in most companies/universities, your employer is “owning” your work and when you leave you may not be allowed to “distribute your code to your future self”. So the best is always to add a license!</p></li>
+<li><p>The least attractive licenses for companies with proprietary software are licenses where you would need to keep an open license when creating derivative work. For instance GPL and and AGPL. The most attractive licenses are permissive licenses where they can reuse, modify and relicense with no conditions. For instance MIT, BSD and Apache License.</p></li>
+</ol>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-sharing-3-create-a-citation-cff-file-for-your-project">
+<h2>Exercise Sharing-3: Create a CITATION.cff file for your project<a class="headerlink" href="#exercise-sharing-3-create-a-citation-cff-file-for-your-project" title="Permalink to this heading"></a></h2>
+<p>Our goal here is to create a <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> file similar to this one and to
+add it to our project (for more information please see
+<a class="reference external" href="https://citation-file-format.github.io/">https://citation-file-format.github.io/</a>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">cff-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.0</span>
+<span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;If</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">software,</span><span class="nv"> </span><span class="s">please</span><span class="nv"> </span><span class="s">cite</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">below.&quot;</span>
+<span class="nt">authors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">family-names</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Doe</span>
+<span class="w">    </span><span class="nt">given-names</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Jane</span>
+<span class="w">    </span><span class="nt">orcid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://orcid.org/1234-5678-9101-1121</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My</span><span class="nv"> </span><span class="s">Research</span><span class="nv"> </span><span class="s">Software&quot;</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0.4</span>
+<span class="nt">doi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5281/zenodo.1234</span>
+<span class="nt">date-released</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-11</span>
+</pre></div>
+</div>
+<p>Steps:</p>
+<ul class="simple">
+<li><p>You can use this nice page that initializes a file for you based on a form: <a class="reference external" href="https://citation-file-format.github.io/cff-initializer-javascript/">https://citation-file-format.github.io/cff-initializer-javascript/</a></p></li>
+<li><p>Or start from the example above and adapt it.</p></li>
+<li><p>If your project is on GitHub, push the new file to the repository (if you
+are unsure how, please first look at the exercise section
+<a class="reference internal" href="../version-control-documentation/#version-control-documentation"><span class="std std-ref">Version control and documentation</span></a>).  Then you can verify that you see a
+“Cite this repository” on GitHub.</p></li>
+</ul>
+<p>Optional:</p>
+<ul class="simple">
+<li><p>Validate the <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> file using <a class="reference external" href="https://github.com/citation-file-format/cffconvert">cffconvert</a>.</p></li>
+<li><p>Add a GitHub Action to automatically validate it on each repository change using <a class="reference external" href="https://github.com/marketplace/actions/cff-validator">cff-validator</a>.</p></li>
+<li><p>Try to deposit your project to the <a class="reference external" href="https://sandbox.zenodo.org/">Zenodo
+sandbox</a>. The sandbox is a good place to
+practice how to get a DOI for your code to make it citable and to preserve
+it (we don’t use the real Zenodo here since we are only practicing; on the
+real Zenodo we cannot delete records anymore).</p></li>
+</ul>
+<div class="admonition-solution solution important dropdown admonition" id="solution-2">
+<p class="admonition-title">Solution</p>
+<p><strong>Validating CITATION.cff</strong></p>
+<p>First install <code class="docutils literal notranslate"><span class="pre">cffconvert</span></code> into a Python virtual environment or a Conda environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>cffconvert
+</pre></div>
+</div>
+<p>Then run it to validate the file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cffconvert<span class="w"> </span>--validate
+
+<span class="go">Citation metadata are valid according to schema version 1.2.0.</span>
+</pre></div>
+</div>
+<p><strong>Automatically validating it using a GitHub Action</strong></p>
+<p>Here is an example: <a class="reference external" href="https://github.com/NordicHPC/sonar/blob/main/.github/workflows/validate-cff.yml">https://github.com/NordicHPC/sonar/blob/main/.github/workflows/validate-cff.yml</a></p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../cmake/" class="btn btn-neutral float-left" title="Building code with CMake" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

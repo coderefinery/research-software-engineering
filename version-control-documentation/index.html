@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Version control and documentation &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_lesson.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Reproducibility and containers" href="../containers/" />
+    <link rel="prev" title="Exercises for: Research software engineering (“CodeRefinery in 1 hour”)" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Exercises</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Version control and documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-git-and-documentation-1-put-your-example-project-under-version-control">Exercise Git-and-documentation-1: Put your (example) project under version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-git-and-documentation-2-backup-publish-your-example-project-to-github-gitlab-yourserver">Exercise Git-and-documentation-2: Backup/publish your (example) project to GitHub/GitLab/YourServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-git-and-documentation-3-practice-code-review-with-somebody-else">Exercise Git-and-documentation-3: Practice code review with somebody else</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-git-and-documentation-4-improve-the-readme-of-your-project">Exercise Git-and-documentation-4: Improve the README of your project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../containers/">Reproducibility and containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake/">Building code with CMake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing-reusing/">Sharing and reusing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/core/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Version control and documentation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/version-control-documentation.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="version-control-and-documentation">
+<span id="version-control-documentation"></span><h1>Version control and documentation<a class="headerlink" href="#version-control-and-documentation" title="Permalink to this heading"></a></h1>
+<p>These exercises are adapted from the <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> lessons:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://coderefinery.github.io/git-intro/">Introduction to version control with Git</a></p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/git-collaborative/">Collaborative distributed version control</a></p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/documentation/">How to document your research software</a></p></li>
+</ul>
+<section id="exercise-git-and-documentation-1-put-your-example-project-under-version-control">
+<h2>Exercise Git-and-documentation-1: Put your (example) project under version control<a class="headerlink" href="#exercise-git-and-documentation-1-put-your-example-project-under-version-control" title="Permalink to this heading"></a></h2>
+<p>This is a good exercise if your project is not tracked by Git yet. If you don’t
+have your own coding project yet, you can first create few example files: for
+instance few cooking recipes and we will use Git to track their versions.</p>
+<ol class="arabic simple">
+<li><p>You will need to have <a class="reference external" href="https://coderefinery.github.io/installation/shell-and-git/">Git installed and
+configured</a>.
+Configuring can take few minutes but it is OK to use the time to configure
+Git to your liking (especially the editor and email).</p></li>
+<li><p>Create a new directory and copy the project files into it.</p></li>
+<li><p>Initialize a new Git repository:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>init
+
+<span class="go">Initialized empty Git repository in /home/user/example/.git</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Now try <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>. It will list all files as untracked (your files will
+be there instead of “another-file.txt” and “some-file.txt”):</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>status
+
+<span class="go">On branch main</span>
+
+<span class="go">No commits yet</span>
+
+<span class="go">Untracked files:</span>
+<span class="go">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+<span class="go">	another-file.txt</span>
+<span class="go">	some-file.txt</span>
+
+<span class="go">nothing added to commit but untracked files present (use &quot;git add&quot; to track)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Now <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> the files to start tracking their changes (replace
+“another-file.txt” and “some-file.txt” with your actual files):</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>another-file.txt
+<span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>some-file.txt
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Now try <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> again:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>status
+
+<span class="go">On branch main</span>
+
+<span class="go">No commits yet</span>
+
+<span class="go">Changes to be committed:</span>
+<span class="go">  (use &quot;git rm --cached &lt;file&gt;...&quot; to unstage)</span>
+<span class="go">	new file:   another-file.txt</span>
+<span class="go">	new file:   some-file.txt</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Now commit the changes (a commit records/”saves” the changes):</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;adding files to get started&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li><p>Now you got a commit. Inspect it with:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li><p>Make some changes to these files or create new files, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> these
+changes, and commit them with:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;informative message&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Then inspect the history again with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code>.</p></li>
+</ol>
+<p>Now you have a Git repository! If you now modify any of the files that are
+tracked, you can always go back.</p>
+</section>
+<hr class="docutils" />
+<section id="exercise-git-and-documentation-2-backup-publish-your-example-project-to-github-gitlab-yourserver">
+<h2>Exercise Git-and-documentation-2: Backup/publish your (example) project to GitHub/GitLab/YourServer<a class="headerlink" href="#exercise-git-and-documentation-2-backup-publish-your-example-project-to-github-gitlab-yourserver" title="Permalink to this heading"></a></h2>
+<p>We assume that our project is now tracked by Git and that we have one or
+more commits. If no, go to Exercise 1 (above).</p>
+<p>For this exercise you need a <a class="reference external" href="https://github.com/join">GitHub account</a>.
+You can also try to do the same on GitLab. The process is analogous but the
+user interface is slightly different (screenshots here are only provided
+for GitHub).</p>
+<p>Make sure that you are <strong>logged into GitHub</strong>.</p>
+<figure class="align-default" id="id1">
+<a class="with-border reference internal image-reference" href="../_images/new-top-left.png"><img alt="../_images/new-top-left.png" class="with-border" src="../_images/new-top-left.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-text">To create a repository we either click the green button “New” (top left corner).</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="with-border reference internal image-reference" href="../_images/new-top-right.png"><img alt="../_images/new-top-right.png" class="with-border" src="../_images/new-top-right.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-text">Or if you see your profile page, there is a “+” menu (top right corner).</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Yet another way to create a new repository is to visit
+<a class="reference external" href="https://github.com/new">https://github.com/new</a> directly.</p>
+<p>On this page choose a project name.
+For the sake of this exercise <strong>do not select</strong>
+“Initialize this repository with a README” (what will happen if you do?):</p>
+<figure class="align-default">
+<a class="with-border reference internal image-reference" href="../_images/creating.png"><img alt="../_images/creating.png" class="with-border" src="../_images/creating.png" style="width: 100%;" /></a>
+</figure>
+<p>Once you click the green “Create repository”, you will see a page similar to:</p>
+<figure class="align-default">
+<a class="with-border reference internal image-reference" href="../_images/created.png"><img alt="../_images/created.png" class="with-border" src="../_images/created.png" style="width: 100%;" /></a>
+</figure>
+<p>What this means is that we have now an empty project with either an HTTPS or an
+SSH address: click on the HTTPS and SSH buttons to see what happens.</p>
+<p>To push changes to the project please <strong>select SSH</strong>.
+For this to work <a class="reference external" href="https://coderefinery.github.io/installation/ssh/">you will need your SSH keys configured</a>.</p>
+<p>We now want to try the second option that GitHub suggests:</p>
+<blockquote>
+<div><p><strong>… or push an existing repository from the command line</strong></p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Now go to your project repository on your computer.</p></li>
+<li><p>Check that you are in the right place with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>.</p></li>
+<li><p>Copy paste the three lines to the terminal and execute those, in my case (<strong>you need to replace the “user” and “project”</strong>):</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:user/project.git
+<span class="gp">$ </span>git<span class="w"> </span>branch<span class="w"> </span>-M<span class="w"> </span>main
+<span class="gp">$ </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>The meaning of the above lines:</p>
+<ul class="simple">
+<li><p>Add a remote reference with the name “origin”</p></li>
+<li><p>Rename current branch to “main”</p></li>
+<li><p>Push branch “main” to “origin”</p></li>
+</ul>
+<p>You should now see:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 221 bytes | 221.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:user/project.git
+ * [new branch]      main -&gt; main
+Branch &#39;main&#39; set up to track remote branch &#39;main&#39; from &#39;origin&#39;.
+</pre></div>
+</div>
+<p>Reload your GitHub project website and - taa-daa - your commits should now
+be online!</p>
+</section>
+<hr class="docutils" />
+<section id="exercise-git-and-documentation-3-practice-code-review-with-somebody-else">
+<h2>Exercise Git-and-documentation-3: Practice code review with somebody else<a class="headerlink" href="#exercise-git-and-documentation-3-practice-code-review-with-somebody-else" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p>Students work in pairs of two.</p></li>
+<li><p>One student creates an example repository on GitHub.</p></li>
+<li><p>The student who created (and owns) the example repository adds the other
+student as “collaborator” (“Settings” -&gt; “Collaborators and teams”).</p></li>
+<li><p>The other student clones the repository from GitHub to their laptop.</p></li>
+<li><p>Before doing any changes create a new branch with a descriptive name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>branch<span class="w"> </span>descriptive-name
+<span class="gp">$ </span>git<span class="w"> </span>checkout<span class="w"> </span>descriptive-name
+<span class="gp">$ </span>git<span class="w"> </span>status
+</pre></div>
+</div>
+</li>
+<li><p>Now make a change to the example project and commit your change to the
+new branch:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>add<span class="w"> </span>somefile.txt
+<span class="gp">$ </span>git<span class="w"> </span>commit<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;descriptive message&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Push the branch (replace “descriptive-name”) to the GitHub repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>descriptive-name
+</pre></div>
+</div>
+</li>
+<li><p>Now you can create a new pull request on GitHub from the new branch
+towards the default branch (main or master). Discuss and review the
+change together in words but also using the web interface: browse the
+change, use the discussion thread, try to suggest changes, and finally
+merge the change and then observe “Insights” -&gt; “Network”.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="exercise-git-and-documentation-4-improve-the-readme-of-your-project">
+<h2>Exercise Git-and-documentation-4: Improve the README of your project<a class="headerlink" href="#exercise-git-and-documentation-4-improve-the-readme-of-your-project" title="Permalink to this heading"></a></h2>
+<p>In this exercise we will try to add a README to your project. If you have one
+already, we will try to improve it by following the checklist from the
+<a class="reference external" href="https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/research-software-engineering/main/presentation.md/">presentation
+slides</a>:</p>
+<ul class="simple">
+<li><p><strong>Purpose</strong></p></li>
+<li><p><strong>Installation instructions</strong></p></li>
+<li><p><strong>Dependencies and their versions or version ranges</strong></p></li>
+<li><p><strong>Copy-paste-able example to get started</strong></p></li>
+<li><p>Tutorials covering key functionality</p></li>
+<li><p>Reference documentation (e.g. API) covering all functionality</p></li>
+<li><p>How do you want to be asked questions (mailing list or forum or chat or issue tracker)</p></li>
+<li><p>Possibly a FAQ section</p></li>
+<li><p>Authors</p></li>
+<li><p><strong>Recommended citation</strong></p></li>
+<li><p>License</p></li>
+<li><p>Contribution guide</p></li>
+</ul>
+<p>See also:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://joss.readthedocs.io/en/latest/review_checklist.html">JOSS review checklist</a></p></li>
+</ul>
+<p>If you are unsure where to start, start with one of the items in bold.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Exercises for: Research software engineering (“CodeRefinery in 1 hour”)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../containers/" class="btn btn-neutral float-right" title="Reproducibility and containers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
