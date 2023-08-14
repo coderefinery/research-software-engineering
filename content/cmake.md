@@ -6,7 +6,7 @@ These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) l
 ````{note}
 Running the examples below on
 [Dardel](https://www.pdc.kth.se/hpc-services/computing-systems/dardel-1.1043529)?
-In this case you need to load the `CMake` module:
+In this case you may need to load the `CMake` module:
 ```console
 $ module load PDC CMake
 ```
@@ -74,6 +74,25 @@ $ cmake --build build
 ```
 
 5. Try to also run the executable.
+
+````{note}
+Instead of creating a build directory, configuring, and building implicitly:
+```console
+$ cmake -S. -Bbuild
+$ cmake --build build
+```
+
+... some people prefer to do this more explicitly (the build directory does not
+have to be called "build"):
+```console
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+```
+
+Both approaches will work for us.
+````
 
 ---
 
@@ -171,9 +190,12 @@ We can do this with the following `CMakeLists.txt`:
 :language: cmake
 ```
 
+**Please try it out** before moving on.
+
 We achieved this with a combination of host system
 introspection and the `target_compile_definitions` command.
 
+Now before moving on, **create a new directory**.
 A common customization is to apply processor-specific compiler flags. We can
 gain such information on the host system with the built-in
 `cmake_host_system_information` command.
