@@ -83,6 +83,11 @@ Steps:
 Optional:
 - Validate the `CITATION.cff` file using [cffconvert](https://github.com/citation-file-format/cffconvert).
 - Add a GitHub Action to automatically validate it on each repository change using [cff-validator](https://github.com/marketplace/actions/cff-validator).
+- Try to deposit your project to the [Zenodo
+  sandbox](https://sandbox.zenodo.org/). The sandbox is a good place to
+  practice how to get a DOI for your code to make it citable and to preserve
+  it (we don't use the real Zenodo here since we are only practicing; on the
+  real Zenodo we cannot delete records anymore).
 
 ````{solution}
 **Validating CITATION.cff**
