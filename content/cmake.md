@@ -241,6 +241,13 @@ Hints:
 - You will not need to modify `CMakeLists.txt`.
 - The relevant variable names are `CMAKE_CXX_COMPILER_ID` and `CMAKE_CXX_COMPILER_VERSION` (or replace `CXX` by `C` or `Fortran`).
 
+````{solution}
+```{literalinclude} cmake/configure-file/solution/config-template.h
+:language: c
+:emphasize-lines: 9,10
+```
+````
+
 **What else to record when configuring?** Here are some ideas:
 - Code version and/or Git hash
 - Compiler versions
