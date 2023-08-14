@@ -3,6 +3,15 @@
 These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) lesson
 ["CMake introduction and hands-on workshop"](https://coderefinery.github.io/cmake-workshop/).
 
+````{note}
+Running the examples below on
+[Dardel](https://www.pdc.kth.se/hpc-services/computing-systems/dardel-1.1043529)?
+In this case you need to load the `CMake` module:
+```console
+$ module load PDC CMake
+```
+````
+
 
 ## Exercise CMake-1: Compiling "Hello, world" with CMake
 
