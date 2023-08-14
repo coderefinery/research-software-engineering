@@ -22,13 +22,20 @@ your favorite language.
 
 ````{tabs}
    ```{group-tab} C++
+      hello.cpp:
 
       ```{literalinclude} cmake/hello-executable/cxx/hello.cpp
       :language: c++
       ```
    ```
 
+   ```{group-tab} C
+      Use and adapt the C++ example.
+      In terms of CMake, both are very similar.
+   ```
+
    ```{group-tab} Fortran
+      hello.f90:
 
       ```{literalinclude} cmake/hello-executable/fortran/hello.f90
       :language: fortran
