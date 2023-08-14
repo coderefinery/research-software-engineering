@@ -280,6 +280,15 @@ work and most relevant for your code.
 4. **Bonus**: Try to adapt what we learned to an example which uses the BLAS or
    LAPACK library or your favorite library.
 
+````{note}
+Running the examples below on
+[Dardel](https://www.pdc.kth.se/hpc-services/computing-systems/dardel-1.1043529)?
+In this case you may need to load the `PrgEnv-gnu` module:
+```console
+$ module load PrgEnv-gnu
+```
+````
+
 ````{tabs}
    ```{group-tab} OpenMP (C++)
       Source file (`example.cpp`):
