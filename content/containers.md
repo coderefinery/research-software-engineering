@@ -426,13 +426,17 @@ scipy version: 1.11.1
 You can build a container on GitHub (using GitHub Actions) or GitLab (using
 GitLab CI) and host the image it on GitHub/GitLab.  This has the following
 advantages:
-- You don't need to host it yourself
-- But the image stays close to its sources and is not on a different service
-- Anybody can inspect the recipe and how it was built
-- Every time you make a change to the recipe, it builds a new image
+- You don't need to host it yourself.
+- But the image stays close to its sources and is not on a different service.
+- Anybody can inspect the recipe and how it was built.
+- Every time you make a change to the recipe, it builds a new image.
 
-If you want to try this out, you can take this repository as starting point and
-inspiration: <https://github.com/bast/singularity-latex>
+If you want to try this out:
+- Take [this repository](https://github.com/bast/apptainer-conda)
+  as starting point and inspiration.
+- Don't focus too much on what this container does, but rather [how it is built](https://github.com/bast/apptainer-conda/tree/main/.github/workflows).
+- To build a new version, one needs to send a pull request which updates `VERSION`
+  and modifies the definition file (in this case `conda.def`).
 
 ---
 
@@ -441,12 +445,12 @@ inspiration: <https://github.com/bast/singularity-latex>
 This may not be easy and you will probably need help from a TA or the
 instructor but is a great exercise and we can try to do this together.
 
-A good test is to build the container on one computer and try to run it on
-another one.  A big benefit of this exercise is that it will clarify to you
-which dependencies your code really has because you have to document them -
-there are no shortcuts.
-
 A good starting point is the [Apptainer User
 Guide](https://apptainer.org/docs/user/latest/), particularly the documentation
 about [definition
 files](https://apptainer.org/docs/user/latest/definition_files.html).
+
+A good test is to build the container on one computer and try to run it on
+another one.  A big benefit of this exercise is that it will clarify to you
+which dependencies your code really has because you have to document them -
+there are no shortcuts.
