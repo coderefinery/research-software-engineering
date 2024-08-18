@@ -1,34 +1,58 @@
-# Reproducibility and containers
+# Reproducible dependencies and environments
 
-These exercises are adapted from the [CodeRefinery](https://coderefinery.org/) lessons
-[Reproducible research and FAIR data](https://coderefinery.github.io/reproducible-research/).
+## How to avoid: "It works on my machine &#129335;"
 
-This is a fun exercise if you want to try to build a container yourself.
-However, for this you need to install
-[SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
-on your laptop and this is only easy to do on a Linux laptop and less easy on
-other operating systems:
-- Reproducibility-3
+Use a **standard way** to list dependencies in your project:
+- Python: `requirements.txt` or `environment.yml`
+- R: `DESCRIPTION` or `renv.lock`
+- Rust: `Cargo.lock`
+- Julia: `Project.toml`
+- C/C++/Fortran: `CMakeLists.txt` or `Makefile` or `spack.yaml` or the module
+  system on clusters or containers
 
-If you have access to a cluster:
-- Reproducibility-3
-- Reproducibility-4
-- Reproducibility-5
+Install dependencies into **isolated environments**:
+- For each project, create a new environment.
+- Don't install dependencies globally for all project.
+- Install them **from a file** which documents them at the same time.
 
-If you want to try to run a container on a cluster but you don't want to or
-cannot build it yourself:
-- Reproducibility-5
+:::{keypoints}
+If somebody asks you what dependencies you have in your project, you should be
+able to answer this question **with a file**.
+:::
 
-If you want exercises where you don't need to type or install anything but "only" think and discuss:
-- Reproducibility-1
-- Reproducibility-2
 
-If you have your own code project and want to try to containerize it:
-- Reproducibility-6
+## Demonstration
 
----
+1. The dependencies in our [example
+   project](https://github.com/coderefinery/planets) are listed in a
+   [environment.yml](https://github.com/coderefinery/planets/blob/main/environment.yml)
+   file.
 
-## Exercise Reproducibility-1: Time-capsule of dependencies
+   :::{discussion}
+   Shouldn't the dependencies in the
+   [environment.yml](https://github.com/coderefinery/planets/blob/main/environment.yml)
+   file be pinned to specific versions?
+   :::
+
+2. We also have a [container definition
+   file](https://github.com/coderefinery/planets/blob/main/container.def):
+   - This can be used with [Apptainer](https://apptainer.org/)/
+     [SingularityCE](https://sylabs.io/singularity/).
+   - A container is like an operating system inside a file.
+   - If we have the time, we can try Exercise Reproducibility-3 below.
+
+
+## Where to explore more
+
+- [Reproducible research](https://coderefinery.github.io/reproducible-research/)
+- [The Turing Way: Guide for Reproducible Research](https://the-turing-way.netlify.app/reproducible-research/reproducible-research.html)
+- [Ten simple rules for writing Dockerfiles for reproducible data science](https://doi.org/10.1371/journal.pcbi.1008316)
+- [Computing environment reproducibility](https://doi.org/10.5281/zenodo.8089471)
+
+
+## Exercises
+
+:::{exercise} Exercise Reproducibility-1: Time-capsule of dependencies
 
 Imagine the following situation: Five students (A, B, C, D, E) wrote a code
 that depends on a couple of libraries.  They uploaded their projects to GitHub.
@@ -214,10 +238,10 @@ repositories?).
 **E** is slightly preferable because version numbers are easier to understand than Git
 commit hashes or Git tags.
 ```
+:::
 
----
 
-## Exercise Reproducibility-2: Time-travel with containers
+:::{exercise} Exercise Reproducibility-2: Time-travel with containers
 
 Imagine the following situation: A researcher has written and published their research code which
 requires a number of libraries and system dependencies. They ran their code
@@ -290,138 +314,119 @@ file (below). From this we should be able to create a new container image.
     ````
   `````
 ``````
+:::
 
----
 
-## Exercise Reproducibility-3: Build a container and run it on a cluster
+::::::{exercise} Exercise Reproducibility-3: Build a container and run it on a cluster
 
-This is a fun exercise if you want to try to build a container yourself.
-However, for this you need to install
-[SingularityCE](https://sylabs.io/singularity/)/[Apptainer](https://apptainer.org/)
-on your laptop and this is only easy to do on a Linux laptop and less easy on
-other operating systems:
+Here we will try to build a container from
+[the definition file](https://github.com/coderefinery/planets/blob/main/container.def)
+of our example project.
 
-We will start with a relatively simple example definition file (`hello.def`).
-All it does is to install cmake on top of a Ubuntu 22.04 Docker image:
-```{literalinclude} containers/hello.def
-:language: docker
-```
+Requirements:
+1. An installation of [Apptainer](https://apptainer.org/) (e.g. following the
+   [quick installation](https://apptainer.org/docs/user/latest/quick_start.html#quick-installation)).
+   Alternatively, [SingularityCE](https://sylabs.io/singularity/) should also
+   work.
+2. Linux (it is possible to build them on a macOS or Windows computer but it is
+   more complicated).
 
-You can try to build it on your laptop:
+Now you can build the container image from the container definition file.
+Depending on the configuration you might need to run the command with `sudo`
+or with `--fakeroot`.
+
+Hopefully one of these four will work:
 ```console
-$ sudo singularity build hello.sif hello.def
+$ sudo apptainer build container.sif container.def
+$ apptainer build --fakeroot container.sif container.def
+
+$ sudo singularity build container.sif container.def
+$ singularity build --fakeroot container.sif container.def
 ```
 
-Then copy the generated `hello.sif` to the cluster and run it with the following script:
-```{literalinclude} containers/run-hello.sh
-:language: bash
-```
+Once you have the `container.sif`, copy it to a cluster and try to run it
+there.
 
-This is the relevant output (observe the highlighted lines and discuss what this means):
-```{literalinclude} containers/hello.out
-:emphasize-lines: 8, 20, 25, 32, 46, 51
-```
+Here are two job script examples:
 
-**Here is another example** of [a project](https://github.com/mfumagalli/ngsTools)
-that I had to containerize recently because it did not build on latest
-compilers (`ngstools.def`):
-```{literalinclude} containers/ngstools.def
-:language: docker
-```
+:::::{tabs}
+   ::::{group-tab} Dardel (Sweden)
+     ```bash
+     #!/usr/bin/env bash
 
-You can try to build it similarly to the example above and then run it with the following script:
-```{literalinclude} containers/run-ngstools.sh
-:language: bash
-```
+     # the SBATCH directives and the module load below are only relevant for the
+     # Dardel cluster and the PDC Summer School; adapt them for your cluster
 
-It should produce an output which contains:
-```
-==> Input Arguments:
-    geno: (null)
-    probs: false
-    log_scale: false
-    n_ind: 0
-    n_sites: 0
-    tot_sites: 0
-    labels: (null) (WITHOUT header)
-    positions: (null) (WITHOUT header)
-    call_geno: false
-    N_thresh: 0.000000
-    call_thresh: 0.000000
-    pairwise_del: false
-    avg_nuc_dist: false
-    evol_model: None
-    geno_indep: false
-    n_boot_rep: 0
-    boot_block_size: 1
-    out: (null)
-    n_threads: 1
-    verbose: 1
-    seed: 1691765155
-    version: 1.0.9 (Aug 11 2023 @ 14:39:11)
+     #SBATCH --account=edu24.summer
+     #SBATCH --job-name='container'
+     #SBATCH --time=0-00:05:00
+
+     #SBATCH --partition=shared
+
+     #SBATCH --nodes=1
+     #SBATCH --tasks-per-node=1
+     #SBATCH --cpus-per-task=16
 
 
-=====
-ERROR: [parse_cmd_args] genotype input file (--geno) missing!
-=====
+     module load PDC singularity
 
-    : Success
-```
 
-We are happy to see "Success". The "ERROR" does not bother us here (this is
-because we did not provide any input files).
+     # catch common shell script errors
+     set -euf -o pipefail
 
----
 
-## Exercise Reproducibility-4: Download a container image and run it on a cluster
+     echo
+     echo "what is the operating system on the host?"
+     cat /etc/os-release
 
-In this exercise we will try something fun: create an isolated, reproducible,
-and documented Conda environment without even installing Conda using the
-container image from <https://github.com/bast/singularity-conda>.
 
-We will use the following file which defines the Conda environment that we
-wish to have (`environment.yml`):
-```{literalinclude} containers/environment.yml
-:language: yaml
-```
+     echo
+     echo "what is the operating system in the container?"
+     singularity exec container.sif cat /etc/os-release
 
-Together with the following Python script (`example.py`):
-```{literalinclude} containers/example.py
-:language: python
-```
 
-This job script (`run-conda.sh`) will download the container image and use it
-to set up a local Conda environment:
-```{literalinclude} containers/run-conda.sh
-:language: bash
-```
+     # 1000 planets, 20 steps
+     time ./container.sif 1000 20 ${SLURM_CPUS_PER_TASK} results
+     ```
+   ::::
 
-```console
-$ sbatch run-conda.sh
-```
+   ::::{group-tab} Saga (Norway)
+     ```bash
+     #!/usr/bin/env bash
 
-And now track the generated `conda.out` where we are interested to see what the
-Python version is and what the versions of the install Pandas and SciPy
-libraries are.  The run can take few minutes since it needs to install
-dependencies into a generated directory called `environment/`:
-```
-... lots of output ...
-Transaction finished
-Python 3.9.17
-pandas version: 1.5.3
-scipy version: 1.11.1
-```
+     #SBATCH --account=nn9997k
+     #SBATCH --job-name='container'
+     #SBATCH --time=0-00:05:00
 
-But if you run the script again, it will complete in seconds:
-```
-Python 3.9.17
-pandas version: 1.5.3
-scipy version: 1.11.1
-```
+     #SBATCH --mem-per-cpu=1G
 
----
+     #SBATCH --nodes=1
+     #SBATCH --tasks-per-node=1
+     #SBATCH --cpus-per-task=16
 
-## Exercise Reproducibility-5: Building a container on GitHub and running it on a cluster
+
+     # catch common shell script errors
+     set -euf -o pipefail
+
+
+     echo
+     echo "what is the operating system on the host?"
+     cat /etc/os-release
+
+
+     echo
+     echo "what is the operating system in the container?"
+     singularity exec container.sif cat /etc/os-release
+
+
+     # 1000 planets, 20 steps
+     time ./container.sif 1000 20 ${SLURM_CPUS_PER_TASK} results
+     ```
+   ::::
+::::::
+
+
+:::{exercise} Exercise Reproducibility-4: Building a container on GitHub and running it on a cluster
 
 You can build a container on GitHub (using GitHub Actions) or GitLab (using
 GitLab CI) and host the image it on GitHub/GitLab.  This has the following
@@ -437,10 +442,10 @@ If you want to try this out:
 - Don't focus too much on what this container does, but rather [how it is built](https://github.com/bast/apptainer-conda/tree/main/.github/workflows).
 - To build a new version, one needs to send a pull request which updates `VERSION`
   and modifies the definition file (in this case `conda.def`).
+:::
 
----
 
-## Exercise Reproducibility-6: Containerizing your own code
+:::{exercise} Exercise Reproducibility-5: Building a container on a cluster
 
 This may not be easy and you will probably need help from a TA or the
 instructor but is a great exercise and we can try to do this together.
@@ -454,3 +459,4 @@ A good test is to build the container on one computer and try to run it on
 another one.  A big benefit of this exercise is that it will clarify to you
 which dependencies your code really has because you have to document them -
 there are no shortcuts.
+:::
