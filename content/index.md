@@ -10,6 +10,7 @@
 
 example
 version-control
+automation
 ```
 
 :::{admonition} Choose your own adventure
