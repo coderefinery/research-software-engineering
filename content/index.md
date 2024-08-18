@@ -27,7 +27,6 @@ exercises. If you have the possibility to work in pairs, please do so.
 :maxdepth: 1
 :caption: Older exercises
 
-version-control-documentation
 containers
 cmake
 sharing-reusing
