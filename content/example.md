@@ -4,7 +4,9 @@ The [example code](https://github.com/coderefinery/planets) that we will study
 is a hopefully simple N-body simulation written in Python. It is not important
 or expected that we understand the code in any detail.
 
-(here add image/video)
+:::{video} video/animation.mp4
+:width: 600
+:::
 
 The **big picture** is that the code simulates the motion of a number of
 planets:
