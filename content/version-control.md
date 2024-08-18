@@ -59,7 +59,7 @@ of them?):
 
 ## Exercises
 
-:::::{exercise} Exercise VC-1: Turn your project to a Git repo and share it
+:::::{exercise} Exercise Git-1: Turn your project to a Git repo and share it
 
 1. Create a new directory called **myproject** with one or few files in it.
    This represents our own project. It is not yet a Git repository. You can try
@@ -333,7 +333,7 @@ Same as command line
 ::::
 :::::
 
-:::{exercise} Exercise VC-2: Create a new branch and a new commit
+:::{exercise} Exercise Git-2: Create a new branch and a new commit
 - Fork the example repository: <https://github.com/coderefinery/planets>
 - Create a new branch **in your fork** and give it a descriptive name.
 - Make a modification **on the new branch** and create a new commit.
