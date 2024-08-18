@@ -72,12 +72,12 @@ Arrows represent compatibility (A -> B: B can reuse A).
 
 ## Exercises
 
-:::{exercise} Sharing-1: Add a license file to your project
+:::{exercise} Exercise Sharing-1: Add a license file to your project
 
 You can use the [Joinup Licensing Assistant](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses).
 :::
 
-:::{exercise} Sharing-2: CITATION.cff and Zenodo sandbox
+:::{exercise} Exercise Sharing-2: CITATION.cff and Zenodo sandbox
 
 In this exercise you can practice adding a `CITATION.cff` file to your own project.
 
@@ -93,7 +93,7 @@ How to get a DOI using the [Zenodo sandbox](https://sandbox.zenodo.org):
   and finally create a GitHub release and get a DOI.
 :::
 
-:::{exercise} Sharing-3: What constitutes derivative work?
+:::{exercise} Exercise Sharing-3: What constitutes derivative work?
 
 Which of these are derivative works?  Also reflect/discuss how this affects the
 choice of license.
@@ -114,7 +114,7 @@ choice of license.
 ```
 :::
 
-:::{exercise} Sharing-3: Licensing situations
+:::{exercise} Exercise Sharing-4: Licensing situations
 
 Consider some common licensing situations. If you are part of an exercise
 group, discuss these with others:

@@ -73,7 +73,7 @@ See also the
 
 ## Exercises
 
-:::{exercise} Documentation-1: Improve the README of your project
+:::{exercise} Exercise Documentation-1: Improve the README of your project
 
 In this exercise we will try to add a README to your project. If you have one
 already, we will try to improve it by following the checklist (above).
@@ -81,7 +81,7 @@ already, we will try to improve it by following the checklist (above).
 If you are unsure where to start, start with one of the items in bold.
 :::
 
-:::{exercise} Documentation-2: In-code documentation
+:::{exercise} Exercise Documentation-2: In-code documentation
 
 Have a look at the following 4 examples and discuss which ones you find useful
 and which ones you find less useful and why.
