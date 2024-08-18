@@ -13,6 +13,7 @@ version-control
 documentation
 testing
 automation
+sharing
 ```
 
 :::{admonition} Choose your own adventure
@@ -29,7 +30,6 @@ exercises. If you have the possibility to work in pairs, please do so.
 
 containers
 cmake
-sharing-reusing
 ```
 
 
