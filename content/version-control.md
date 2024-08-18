@@ -342,3 +342,14 @@ Same as command line
 - In case you would like to contribute your change back to the original
   repository, you would create a pull request (you are welcome to try).
 :::
+
+::::{exercise} Exercise Git-3: Archaeology using Git annotate ("blame")
+Your goal is to find out when precisely
+[this line](https://github.com/coderefinery/planets/blob/813d49a247f36e9c1e10cbe78ecf1ae4b6e971c3/simulate.py#L108)
+was modified last time (which commit)?
+
+:::{solution}
+It was this commit:
+<https://github.com/coderefinery/planets/commit/56cf6fdfef6a516ee369034d7c67a20237abb368>
+:::
+::::
