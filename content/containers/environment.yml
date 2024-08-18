@@ -1,7 +1,0 @@
-name: myproject
-channels:
-  - defaults
-dependencies:
-  - python=3.9
-  - pandas
-  - scipy
