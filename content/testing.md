@@ -73,7 +73,8 @@ You can do this exercise either on your computer (in this case **clone** the
 this case **fork** the [example
 project](https://github.com/coderefinery/planets)).
 
-First we need to add a test function, for instance here:
+First we need to add a test function, for instance
+for [this function](https://github.com/coderefinery/planets/blob/813d49a247f36e9c1e10cbe78ecf1ae4b6e971c3/simulate.py#L31-L39):
 ```{code-block} python
 ---
 emphasize-lines: 12-20
