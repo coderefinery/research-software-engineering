@@ -12,7 +12,7 @@ Use a **standard way** to list dependencies in your project:
 
 Install dependencies into **isolated environments**:
 - For each project, create a new environment.
-- Don't install dependencies globally for all project.
+- Don't install dependencies globally for all projects.
 - Install them **from a file** which documents them at the same time.
 
 :::{keypoints}
