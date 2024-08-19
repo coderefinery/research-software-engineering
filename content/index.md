@@ -1,7 +1,7 @@
 # Research software engineering ("CodeRefinery in 1 hour")
 
-Previously this was presented using slides:
-[Research software engineering ("CodeRefinery in 1 hour")](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/research-software-engineering/main/presentation.md/)
+Previously this was presented
+[using slides](https://cicero.xyz/v3/remark/0.14.0/github.com/coderefinery/research-software-engineering/main/presentation.md/).
 
 ```{toctree}
 :maxdepth: 1
