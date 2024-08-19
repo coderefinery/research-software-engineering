@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sharing (licensing and publishing) &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Building code with CMake" href="../cmake/" />
+    <link rel="prev" title="Automation and reproducible workflows" href="../automation/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../example/">Example project: simulating the motion of planets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../version-control/">Version control and code review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reproducibility/">Reproducible dependencies and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../automation/">Automation and reproducible workflows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sharing (licensing and publishing)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-software-licenses-matter">Why software licenses matter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taxonomy-of-software-licenses">Taxonomy of software licenses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demonstration">Demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-explore-more">Where to explore more</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Older exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cmake/">Building code with CMake</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About CodeRefinery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/">CodeRefinery lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Sharing (licensing and publishing)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/sharing.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sharing-licensing-and-publishing">
+<h1>Sharing (licensing and publishing)<a class="headerlink" href="#sharing-licensing-and-publishing" title="Permalink to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Add a <strong>license</strong> to your project.</p></li>
+<li><p>Understand why software licenses matter.</p></li>
+<li><p>Learn how to make a code project <strong>persistent</strong> and <strong>citable</strong>.</p></li>
+<li><p>Understand that publishing a code on GitHub is not enough
+to make it persistent and findable 10 years from now.</p></li>
+</ul>
+</div>
+<section id="why-software-licenses-matter">
+<h2>Why software licenses matter<a class="headerlink" href="#why-software-licenses-matter" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>We often want or need to make changes to other people’s code,
+or we want other people to be able to make changes to our code.</p></li>
+<li><p>Without a license the <strong>derivative work</strong> cannot be distributed or
+published.</p></li>
+<li><p>Maybe you want to be able to use and change your own code in your next job?</p></li>
+</ul>
+</section>
+<section id="taxonomy-of-software-licenses">
+<h2>Taxonomy of software licenses<a class="headerlink" href="#taxonomy-of-software-licenses" title="Permalink to this heading"></a></h2>
+<p>If you don’t have a license, your code is in the red area
+in this picture and others cannot mix it with their code.
+Arrows represent compatibility (A -&gt; B: B can reuse A).</p>
+<figure class="align-default" id="id1">
+<img alt="European Union Public Licence (EUPL): guidelines July 2021" src="../_images/license-models.png" />
+<figcaption>
+<p><span class="caption-text">European Commission, Directorate-General for Informatics, Schmitz, P.,
+European Union Public Licence (EUPL): guidelines July 2021, Publications
+Office, 2021, <a class="reference external" href="https://data.europa.eu/doi/10.2799/77160">https://data.europa.eu/doi/10.2799/77160</a>.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Choose a standard license</strong>.
+Don’t design your own otherwise compatibility won’t be clear.</p>
+<p><strong>Great resources</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses">Joinup Licensing Assistant</a></p></li>
+<li><p><a class="reference external" href="https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-compatibility-checker">Joinup Licensing Assistant - Compatibility Checker</a></p></li>
+</ul>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Choose a license and add a LICENSE file to your repository.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> file to your repository:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">cff-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.0</span>
+<span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;If</span><span class="nv"> </span><span class="s">you</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">software,</span><span class="nv"> </span><span class="s">please</span><span class="nv"> </span><span class="s">cite</span><span class="nv"> </span><span class="s">it</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">below.&quot;</span>
+<span class="nt">authors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">family-names</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Doe</span>
+<span class="w">    </span><span class="nt">given-names</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Jane</span>
+<span class="w">    </span><span class="nt">orcid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://orcid.org/1234-5678-9101-1121</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My</span><span class="nv"> </span><span class="s">Research</span><span class="nv"> </span><span class="s">Software&quot;</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0.4</span>
+<span class="nt">doi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.5281/zenodo.1234</span>
+<span class="nt">date-released</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2021-08-11</span>
+</pre></div>
+</div>
+<p>More about <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> files:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files">GitHub now supports CITATION.cff files</a></p></li>
+<li><p><a class="reference external" href="https://citation-file-format.github.io/cff-initializer-javascript/">Web form to create, edit, and validate CITATION.cff files</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=zcgLIT5Qd4M">Video: “How to create a CITATION.cff using cffinit”</a></p></li>
+</ul>
+</li>
+<li><p>We can make our code persistent and citable following
+<a class="reference external" href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">these steps</a>.</p></li>
+</ol>
+</section>
+<section id="where-to-explore-more">
+<h2>Where to explore more<a class="headerlink" href="#where-to-explore-more" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Presentation slides “Practical software licensing” (R. Bast): <a class="reference external" href="https://doi.org/10.5281/zenodo.11554001">https://doi.org/10.5281/zenodo.11554001</a></p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/social-coding/">Social coding lesson material</a></p></li>
+<li><p><a class="reference external" href="https://research-software.uit.no/blog/2023-software-licensing-guide/">UiT research software licensing guide (draft)</a></p></li>
+<li><p><a class="reference external" href="https://www.researchsoft.org/software-policies/">Research institution policies to support research software (compiled by the Research Software Alliance)</a></p></li>
+<li><p>More <a class="reference external" href="https://coderefinery.github.io/social-coding/software-licensing/#great-resources">reading material</a></p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<div class="admonition-exercise-sharing-1-add-a-license-file-to-your-project exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise Sharing-1: Add a license file to your project</p>
+<p>You can use the <a class="reference external" href="https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses">Joinup Licensing Assistant</a>.</p>
+</div>
+<div class="admonition-exercise-sharing-2-citation-cff-and-zenodo-sandbox exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise Sharing-2: CITATION.cff and Zenodo sandbox</p>
+<p>In this exercise you can practice adding a <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> file to your own project.</p>
+<p>We will then practice getting a DOI using the <a class="reference external" href="https://sandbox.zenodo.org">Zenodo
+sandbox</a>.  We use here the Zenodo sandbox and not
+the “real” Zenodo, since we are only practicing. On the “real” Zenodo a record
+with a DOI cannot be deleted (this is the point of making it persistent).</p>
+<p>How to get a DOI using the <a class="reference external" href="https://sandbox.zenodo.org">Zenodo sandbox</a>:</p>
+<ul class="simple">
+<li><p>Log into the <a class="reference external" href="https://sandbox.zenodo.org">Zenodo sandbox</a> using
+GitHub.</p></li>
+<li><p>Follow <a class="reference external" href="https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content">these steps</a>
+to create a GitHub release and get a DOI.</p></li>
+</ul>
+</div>
+<div class="admonition-exercise-sharing-3-what-constitutes-derivative-work exercise important admonition" id="exercise-2">
+<p class="admonition-title">Exercise Sharing-3: What constitutes derivative work?</p>
+<p>Which of these are derivative works?  Also reflect/discuss how this affects the
+choice of license.</p>
+<ul class="simple">
+<li><p>A. Download some code from a website and add on to it</p></li>
+<li><p>B. Download some code and use one of the functions in your code</p></li>
+<li><p>C. Changing code you got from somewhere</p></li>
+<li><p>D. Extending code you got from somewhere</p></li>
+<li><p>E. Completely rewriting code you got from somewhere</p></li>
+<li><p>F. Rewriting code to a different programming language</p></li>
+<li><p>G. Linking to libraries (static or dynamic), plug-ins, and drivers</p></li>
+<li><p>H. Clean room design (somebody explains you the code but you have never seen it)</p></li>
+<li><p>I. You read a paper, understand algorithm, write own code</p></li>
+</ul>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p>Derivative work: A-F</p></li>
+<li><p>Not derivative work: G-I</p></li>
+<li><p>E and F: This depends on how you do it, see “clean room design”.</p></li>
+</ul>
+</div>
+</div>
+<div class="admonition-exercise-sharing-4-licensing-situations exercise important admonition" id="exercise-3">
+<p class="admonition-title">Exercise Sharing-4: Licensing situations</p>
+<p>Consider some common licensing situations. If you are part of an exercise
+group, discuss these with others:</p>
+<ol class="arabic simple">
+<li><p>What is the StackOverflow license for code you copy and paste?</p></li>
+<li><p>A journal requests that you release your software during publication. You have
+copied a portion of the code from another package, which you have forgotten.
+Can you satisfy the journal’s request?</p></li>
+<li><p>You want to fix a bug in a project someone else has released, but there is no license. What risks are there?</p></li>
+<li><p>How would you ask someone to add a license?</p></li>
+<li><p>You incorporate MIT, GPL, and BSD3 licensed code into your project. What possible licenses can you pick for your project?</p></li>
+<li><p>You do the same as above but add in another license that looks strong copyleft. What possible licenses can you use now?</p></li>
+<li><p>Do licenses apply if you don’t distribute your code? Why or why not?</p></li>
+<li><p>Which licenses are most/least attractive for companies with proprietary software?</p></li>
+</ol>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<ol class="arabic simple">
+<li><p>As indicated <a class="reference external" href="https://stackoverflow.com/help/licensing">here</a>, all publicly accessible user contributions are licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike</a> license. See Stackoverflow <a class="reference external" href="https://stackoverflow.com/legal/terms-of-service/public#licensing">Terms of service</a> for more detailed information.</p></li>
+<li><p>“Standard” licensing rules apply. So in this case, you would need to remove the portion of code you have copied from another package before being able to release your software.</p></li>
+<li><p>By default you are no authorized to use the content of a repository when there is no license. And derivative work is also not possible by default. Other risks: it may not be clear whether you can use and distribute (publish) the bugfixed code. For the repo owners it may not be clear whether they can use and distributed the bugfixed code. However, the authors may have forgotten to add a license so we suggest you to contact the authors (e.g. make an issue) and ask whether they are willing to add a license.</p></li>
+<li><p>As mentionned in 3., the easiest is to fill an issue and explain the reasons why you would like to use this software (or update it).</p></li>
+<li><p>Combining software with different licenses can be tricky and it is important to understand compatibilities (or lack of compatibilities) of the various licenses. GPL license is the most protective (BSD and MIT are quite permissive) so for the resulting combined software you could use a GPL license. However, re-licensing may not be necessary.</p></li>
+<li><p>Derivative work would need to be shared under this strong copyleft license (e.g. AGPL or GPL), unless the components are only plugins or libraries.</p></li>
+<li><p>If you keep your code for yourself, you may think you do not need a license. However, remember that in most companies/universities, your employer is “owning” your work and when you leave you may not be allowed to “distribute your code to your future self”. So the best is always to add a license!</p></li>
+<li><p>The least attractive licenses for companies with proprietary software are licenses where you would need to keep an open license when creating derivative work. For instance GPL and and AGPL. The most attractive licenses are permissive licenses where they can reuse, modify and relicense with no conditions. For instance MIT, BSD and Apache License.</p></li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../automation/" class="btn btn-neutral float-left" title="Automation and reproducible workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../cmake/" class="btn btn-neutral float-right" title="Building code with CMake" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

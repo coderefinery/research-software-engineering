@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example project: simulating the motion of planets &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Version control and code review" href="../version-control/" />
+    <link rel="prev" title="Research software engineering (“CodeRefinery in 1 hour”)" href="../" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example project: simulating the motion of planets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-run">Example run</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../version-control/">Version control and code review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reproducibility/">Reproducible dependencies and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../automation/">Automation and reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing (licensing and publishing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Older exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cmake/">Building code with CMake</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About CodeRefinery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/">CodeRefinery lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example project: simulating the motion of planets</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/example.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-project-simulating-the-motion-of-planets">
+<h1>Example project: simulating the motion of planets<a class="headerlink" href="#example-project-simulating-the-motion-of-planets" title="Permalink to this heading"></a></h1>
+<p>The <a class="reference external" href="https://github.com/coderefinery/planets">example code</a> that we will study
+is a hopefully simple N-body simulation written in Python. It is not important
+or expected that we understand the code in any detail.</p>
+<video controls="True" preload="auto" width="600"><source src="../_images/animation.mp4" type="video/mp4"></video><p>The <strong>big picture</strong> is that the code simulates the motion of a number of
+planets:</p>
+<ul class="simple">
+<li><p>We can choose the number of planets.</p></li>
+<li><p>Each planet starts with a random position, velocity, and mass.</p></li>
+<li><p>At each time step, the code calculates the gravitational force between each
+pair of planets.</p></li>
+<li><p>The forces accelerate each planet, the acceleration modifies the velocity,
+the velocity modifies the position of each planet.</p></li>
+<li><p>We can choose the number of time steps.</p></li>
+<li><p>The units were chosen to make numbers easy to read.</p></li>
+</ul>
+<section id="example-run">
+<h2>Example run<a class="headerlink" href="#example-run" title="Permalink to this heading"></a></h2>
+<div class="admonition-instructor-note instructor-note admonition" id="instructor-note-0">
+<p class="admonition-title">Instructor note</p>
+<p>The instructor demonstrates running the code on their computer.</p>
+</div>
+<p>The code is written to accept <strong>command-line arguments</strong> to specify the number
+of planets and the number of time steps.</p>
+<p>We first generate starting data:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>generate-data.py<span class="w"> </span>--num-planets<span class="w"> </span><span class="m">10</span><span class="w"> </span>--output-file<span class="w"> </span>initial.csv
+</pre></div>
+</div>
+<p>The generated file (initial.csv) could look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">px</span><span class="p">,</span><span class="n">py</span><span class="p">,</span><span class="n">pz</span><span class="p">,</span><span class="n">vx</span><span class="p">,</span><span class="n">vy</span><span class="p">,</span><span class="n">vz</span><span class="p">,</span><span class="n">mass</span>
+<span class="o">-</span><span class="mf">46.88</span><span class="p">,</span><span class="o">-</span><span class="mf">42.51</span><span class="p">,</span><span class="mf">88.33</span><span class="p">,</span><span class="o">-</span><span class="mf">0.86</span><span class="p">,</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.55</span><span class="p">,</span><span class="mf">6.70</span>
+<span class="o">-</span><span class="mf">5.29</span><span class="p">,</span><span class="mf">17.09</span><span class="p">,</span><span class="o">-</span><span class="mf">96.13</span><span class="p">,</span><span class="mf">0.66</span><span class="p">,</span><span class="mf">0.45</span><span class="p">,</span><span class="o">-</span><span class="mf">0.17</span><span class="p">,</span><span class="mf">3.51</span>
+<span class="mf">83.53</span><span class="p">,</span><span class="o">-</span><span class="mf">92.83</span><span class="p">,</span><span class="o">-</span><span class="mf">68.77</span><span class="p">,</span><span class="o">-</span><span class="mf">0.26</span><span class="p">,</span><span class="o">-</span><span class="mf">0.48</span><span class="p">,</span><span class="mf">0.24</span><span class="p">,</span><span class="mf">6.84</span>
+<span class="o">-</span><span class="mf">36.31</span><span class="p">,</span><span class="mf">25.48</span><span class="p">,</span><span class="mf">64.16</span><span class="p">,</span><span class="mf">0.85</span><span class="p">,</span><span class="mf">0.75</span><span class="p">,</span><span class="o">-</span><span class="mf">0.56</span><span class="p">,</span><span class="mf">1.53</span>
+<span class="o">-</span><span class="mf">68.38</span><span class="p">,</span><span class="o">-</span><span class="mf">17.21</span><span class="p">,</span><span class="o">-</span><span class="mf">97.07</span><span class="p">,</span><span class="mf">0.60</span><span class="p">,</span><span class="mf">0.26</span><span class="p">,</span><span class="mf">0.69</span><span class="p">,</span><span class="mf">6.63</span>
+<span class="o">-</span><span class="mf">48.37</span><span class="p">,</span><span class="o">-</span><span class="mf">48.74</span><span class="p">,</span><span class="mf">3.92</span><span class="p">,</span><span class="o">-</span><span class="mf">0.92</span><span class="p">,</span><span class="o">-</span><span class="mf">0.33</span><span class="p">,</span><span class="o">-</span><span class="mf">0.93</span><span class="p">,</span><span class="mf">8.60</span>
+<span class="mf">40.53</span><span class="p">,</span><span class="o">-</span><span class="mf">75.50</span><span class="p">,</span><span class="mf">44.18</span><span class="p">,</span><span class="o">-</span><span class="mf">0.62</span><span class="p">,</span><span class="o">-</span><span class="mf">0.31</span><span class="p">,</span><span class="o">-</span><span class="mf">0.53</span><span class="p">,</span><span class="mf">8.04</span>
+<span class="o">-</span><span class="mf">27.21</span><span class="p">,</span><span class="mf">10.78</span><span class="p">,</span><span class="o">-</span><span class="mf">78.82</span><span class="p">,</span><span class="o">-</span><span class="mf">0.09</span><span class="p">,</span><span class="o">-</span><span class="mf">0.55</span><span class="p">,</span><span class="o">-</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">5.35</span>
+<span class="mf">88.42</span><span class="p">,</span><span class="o">-</span><span class="mf">74.95</span><span class="p">,</span><span class="o">-</span><span class="mf">45.85</span><span class="p">,</span><span class="mf">0.81</span><span class="p">,</span><span class="mf">0.68</span><span class="p">,</span><span class="mf">0.56</span><span class="p">,</span><span class="mf">5.36</span>
+<span class="mf">39.09</span><span class="p">,</span><span class="mf">53.12</span><span class="p">,</span><span class="o">-</span><span class="mf">59.54</span><span class="p">,</span><span class="o">-</span><span class="mf">0.54</span><span class="p">,</span><span class="mf">0.56</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">8.98</span>
+</pre></div>
+</div>
+<p>Then we can simulate their motion (in this case for 20 steps):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>simulate.py<span class="w"> </span>--num-steps<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                     </span>--input-file<span class="w"> </span>initial.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">                     </span>--output-file<span class="w"> </span>final.csv
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--output-file</span></code> (final.csv) is again a CSV file (comma-separated values)
+and contains the final positions of all planets.</p>
+<p>It is possible to run on <strong>multiple cores</strong> and to <strong>animate</strong> the result.
+Here is an example with 100 planets:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>generate-data.py<span class="w"> </span>--num-planets<span class="w"> </span><span class="m">100</span><span class="w"> </span>--output-file<span class="w"> </span>initial.csv
+
+<span class="gp">$ </span>python<span class="w"> </span>simulate.py<span class="w"> </span>--num-steps<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                     </span>--input-file<span class="w"> </span>initial.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">                     </span>--output-file<span class="w"> </span>final.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">                     </span>--trajectories-file<span class="w"> </span>trajectories.npz<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">                     </span>--num-cores<span class="w"> </span><span class="m">8</span>
+</span>
+<span class="gp">$ </span>python<span class="w"> </span>animate.py<span class="w"> </span>--initial-file<span class="w"> </span>initial.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--trajectories-file<span class="w"> </span>trajectories.npz<span class="w"> </span><span class="se">\</span>
+<span class="hll"><span class="w">                    </span>--output-file<span class="w"> </span>animation.mp4
+</span></pre></div>
+</div>
+<div class="admonition-learning-goals admonition">
+<p class="admonition-title">Learning goals</p>
+<ul class="simple">
+<li><p>What are the most important steps to make this code <strong>reusable by others</strong>
+and <strong>our future selves</strong>?</p></li>
+<li><p>Be able to apply these techniques to your own code/script.</p></li>
+</ul>
+</div>
+<div class="admonition-we-will-not-focus-on admonition">
+<p class="admonition-title">We will not focus on …</p>
+<ul class="simple">
+<li><p>… the programming language choice.</p></li>
+<li><p>… how the code works internally.</p></li>
+<li><p>… whether this is the most efficient algorithm.</p></li>
+<li><p>… whether the code is numerically stable.</p></li>
+<li><p>… how to code scales with the number of cores.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../" class="btn btn-neutral float-left" title="Research software engineering (“CodeRefinery in 1 hour”)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../version-control/" class="btn btn-neutral float-right" title="Version control and code review" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

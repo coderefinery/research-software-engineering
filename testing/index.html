@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Automation and reproducible workflows" href="../automation/" />
+    <link rel="prev" title="Reproducible dependencies and environments" href="../reproducibility/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../example/">Example project: simulating the motion of planets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../version-control/">Version control and code review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reproducibility/">Reproducible dependencies and environments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-start">Where to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demonstration">Demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-explore-more">Where to explore more</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../automation/">Automation and reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing (licensing and publishing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Older exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cmake/">Building code with CMake</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About CodeRefinery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/">CodeRefinery lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Testing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/testing.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Know <strong>where to start</strong> in your own project.</p></li>
+<li><p>Have an example for how to make the <strong>testing part of code review</strong>.</p></li>
+</ul>
+</div>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading"></a></h2>
+<p>Testing is a way to check that the code does what it is expected to.</p>
+<ul class="simple">
+<li><p><strong>Less scary to change code</strong>: tests will tell you whether something broke.</p></li>
+<li><p><strong>Easier for new people</strong> to join.</p></li>
+<li><p>Easier for somebody to <strong>revive an old code</strong>.</p></li>
+<li><p><strong>End-to-end test</strong>: run the whole code and compare result to a reference.</p></li>
+<li><p><strong>Unit tests</strong> can guide towards better structured code: complicated code is more difficult to test.</p></li>
+</ul>
+</section>
+<section id="where-to-start">
+<h2>Where to start<a class="headerlink" href="#where-to-start" title="Permalink to this heading"></a></h2>
+<p>Short answer: <strong>Start with an end-to-end test</strong>.</p>
+<div class="admonition-longer-answer solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Longer answer</p>
+<ul class="simple">
+<li><p>A simple script or notebook probably does not need an automated test.</p></li>
+</ul>
+<p><strong>If you have nothing yet</strong>:</p>
+<ul class="simple">
+<li><p>Start with an end-to-end test.</p></li>
+<li><p>Describe in words how <em>you</em> check whether the code still works.</p></li>
+<li><p>Translate the words into a script (any language).</p></li>
+<li><p>Run the script automatically on every code change.</p></li>
+</ul>
+<p><strong>If you want to start with unit-testing</strong>:</p>
+<ul class="simple">
+<li><p>You want to rewrite a function? Start adding a unit test right there first.</p></li>
+</ul>
+</div>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>This is our end-to-end test: <a class="reference external" href="https://github.com/coderefinery/planets/blob/main/test.sh">https://github.com/coderefinery/planets/blob/main/test.sh</a></p></li>
+<li><p>Note how we can run it <a class="reference external" href="https://github.com/coderefinery/planets/blob/813d49a247f36e9c1e10cbe78ecf1ae4b6e971c3/.github/workflows/test.yml#L28">on GitHub automatically</a>.</p></li>
+<li><p>If we have time, we can try to create a pull request which would break the
+code and see how the test fails.</p></li>
+</ul>
+<div class="admonition-discussion discussion important admonition" id="discussion-0">
+<p class="admonition-title">Discussion</p>
+<p>Is the <a class="reference external" href="https://github.com/coderefinery/planets/blob/main/test.sh">end-to-end test</a>
+perfect? No. But it’s a good starting point. Discuss its limitations.</p>
+</div>
+</section>
+<section id="where-to-explore-more">
+<h2>Where to explore more<a class="headerlink" href="#where-to-explore-more" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://coderefinery.github.io/testing/">Software testing lesson material</a></p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/mini-workshop/2/testing/">Mini-workshop on testing</a></p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<div class="admonition-exercise-testing-1-design-an-end-to-end-test exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise Testing-1: Design an end-to-end test</p>
+<p>Try this process on your own code or a code that you have
+recently used:</p>
+<ol class="arabic simple">
+<li><p>Describe in words how <em>you</em> check whether the code still works.</p></li>
+<li><p>Translate the words into a script (any language).</p></li>
+<li><p>Run the script automatically on every code change.</p></li>
+</ol>
+<p>Already step 1 is a good exercise in itself.  If you can arrive at step 2,
+it’s amazing, but it can take some time. Step 3 is typically relatively easy.</p>
+</div>
+<div class="admonition-exercise-testing-2-add-a-unit-test exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise Testing-2: Add a unit test</p>
+<p>You can do this exercise either on your computer (in this case <strong>clone</strong> the
+<a class="reference external" href="https://github.com/coderefinery/planets">example project</a>), or on GitHub (in
+this case <strong>fork</strong> the <a class="reference external" href="https://github.com/coderefinery/planets">example
+project</a>).</p>
+<p>First we need to add a test function, for instance
+for <a class="reference external" href="https://github.com/coderefinery/planets/blob/813d49a247f36e9c1e10cbe78ecf1ae4b6e971c3/simulate.py#L31-L39">this function</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">force_between_planets</span><span class="p">(</span><span class="n">position1</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">position2</span><span class="p">,</span> <span class="n">mass2</span><span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># gravitational constant</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">position2</span> <span class="o">-</span> <span class="n">position1</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">r</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="n">force_magnitude</span> <span class="o">=</span> <span class="n">G</span> <span class="o">*</span> <span class="n">mass1</span> <span class="o">*</span> <span class="n">mass2</span> <span class="o">/</span> <span class="n">distance</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="n">force_magnitude</span>
+
+    <span class="k">return</span> <span class="n">force</span>
+
+
+<span class="hll"><span class="k">def</span> <span class="nf">test_force_between_planets</span><span class="p">():</span>
+</span><span class="hll">    <span class="n">position1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+</span><span class="hll">    <span class="n">mass1</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span><span class="hll">    <span class="n">position2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+</span><span class="hll">    <span class="n">mass2</span> <span class="o">=</span> <span class="mf">2.0</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="n">force</span> <span class="o">=</span> <span class="n">force_between_planets</span><span class="p">(</span><span class="n">position1</span><span class="p">,</span> <span class="n">mass1</span><span class="p">,</span> <span class="n">position2</span><span class="p">,</span> <span class="n">mass2</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">force</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+</span></pre></div>
+</div>
+<p>We also need to extend our
+<a class="reference external" href="https://github.com/coderefinery/planets/blob/main/environment.yml">environment.yml</a>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">planets</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conda-forge</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python=3.12</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">click</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+<span class="hll"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+</span></pre></div>
+</div>
+<p>If you try this on your computer, you can run
+the test with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pytest<span class="w"> </span>simulate.py
+</pre></div>
+</div>
+<p>If you want GitHub to run it, we need to extend
+<a class="reference external" href="https://github.com/coderefinery/planets/blob/main/.github/workflows/test.yml">.github/workflows/test.yml</a>
+(highlighted line):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout</span>
+<span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mamba-org/setup-micromamba@v1</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">micromamba-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1.5.8-0&#39;</span><span class="w"> </span><span class="c1"># any version from https://github.com/mamba-org/micromamba-releases</span>
+<span class="w">        </span><span class="nt">environment-file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">environment.yml</span>
+<span class="w">        </span><span class="nt">init-shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash</span>
+<span class="w">        </span><span class="nt">cache-environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">post-cleanup</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;all&#39;</span>
+<span class="w">        </span><span class="nt">generate-run-shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">./test.sh</span>
+<span class="hll"><span class="w">        </span><span class="no">pytest simulate.py</span>
+</span><span class="w">      </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bash -el {0}</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../reproducibility/" class="btn btn-neutral float-left" title="Reproducible dependencies and environments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../automation/" class="btn btn-neutral float-right" title="Automation and reproducible workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

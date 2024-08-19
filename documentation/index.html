@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Reproducible dependencies and environments" href="../reproducibility/" />
+    <link rel="prev" title="Version control and code review" href="../version-control/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../example/">Example project: simulating the motion of planets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../version-control/">Version control and code review</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-to-your-future-self">Why? 💗✉️ to your future self</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#often-a-readme-is-enough-checklist">Often a README is enough - checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#demonstration">Demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-if-you-need-more-than-a-readme">What if you need more than a README?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-explore-more">Where to explore more</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reproducibility/">Reproducible dependencies and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../automation/">Automation and reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing (licensing and publishing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Older exercises</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cmake/">Building code with CMake</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About CodeRefinery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/">CodeRefinery lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/documentation.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Improve the README of your project or our example project.</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Often a README is enough.</p></li>
+<li><p>Documentation which is only in the source code is not enough.</p></li>
+<li><p>Documentation needs to be kept
+<strong>in the same Git repository</strong> as the code.
+It evolves <a class="reference external" href="https://github.com/coderefinery/planets/network">with the code</a>.</p></li>
+</ul>
+</div>
+<section id="why-to-your-future-self">
+<h2>Why? 💗✉️ to your future self<a class="headerlink" href="#why-to-your-future-self" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>You will probably use your code in the future and may forget details.</p></li>
+<li><p>You may want others to use your code or contribute
+(almost impossible without documentation).</p></li>
+</ul>
+</section>
+<section id="often-a-readme-is-enough-checklist">
+<h2>Often a README is enough - checklist<a class="headerlink" href="#often-a-readme-is-enough-checklist" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Purpose</strong></p></li>
+<li><p>Requirements</p></li>
+<li><p>Installation instructions</p></li>
+<li><p><strong>Copy-paste-able example to get started</strong></p></li>
+<li><p>Tutorials covering key functionality</p></li>
+<li><p>Reference documentation (e.g. API) covering all functionality</p></li>
+<li><p>Authors and <strong>recommended citation</strong></p></li>
+<li><p>License</p></li>
+<li><p>Contribution guide</p></li>
+</ul>
+<p>See also the
+<a class="reference external" href="https://joss.readthedocs.io/en/latest/review_checklist.html">JOSS review checklist</a>.</p>
+</section>
+<section id="demonstration">
+<h2>Demonstration<a class="headerlink" href="#demonstration" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>If we have time, we will improve the README.md of our example repository:
+<a class="reference external" href="https://github.com/coderefinery/planets">https://github.com/coderefinery/planets</a></p></li>
+</ul>
+</section>
+<section id="what-if-you-need-more-than-a-readme">
+<h2>What if you need more than a README?<a class="headerlink" href="#what-if-you-need-more-than-a-readme" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Write documentation in
+<a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown (.md)</a>
+or
+<a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">reStructuredText (.rst)</a>
+or
+<a class="reference external" href="https://rmarkdown.rstudio.com/">R Markdown (.Rmd)</a></p></li>
+<li><p>In the <strong>same repository</strong> as the code -&gt; version control and <strong>reproducibility</strong></p></li>
+<li><p>Use one of many tools to build HTML out of md/rst/Rmd:
+<a class="reference external" href="https://sphinx-doc.org">Sphinx</a>,
+<a class="reference external" href="https://www.mkdocs.org/">MkDocs</a>,
+<a class="reference external" href="https://www.getzola.org/">Zola</a>, <a class="reference external" href="https://jekyllrb.com/">Jekyll</a>,
+<a class="reference external" href="https://gohugo.io/">Hugo</a>, RStudio, <a class="reference external" href="https://yihui.org/knitr/">knitr</a>,
+<a class="reference external" href="https://bookdown.org/">bookdown</a>,
+<a class="reference external" href="https://bookdown.org/yihui/blogdown/">blogdown</a>, …</p></li>
+<li><p>Deploy the generated HTML to <a class="reference external" href="https://pages.github.com/">GitHub Pages</a> or
+<a class="reference external" href="https://docs.gitlab.com/ee/user/project/pages/">GitLab Pages</a></p></li>
+</ul>
+</section>
+<section id="where-to-explore-more">
+<h2>Where to explore more<a class="headerlink" href="#where-to-explore-more" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://coderefinery.github.io/documentation/">Documentation lesson material</a></p></li>
+<li><p><a class="reference external" href="https://github.com/samumantha/documentation_example">Talk material “Documenting code” by S. Wittke</a></p></li>
+<li><p>Inside Sphinx we can add tables, images, equations, code snippets, … (<a class="reference external" href="https://coderefinery.github.io/documentation/sphinx/#exercise-adding-more-sphinx-content">more information</a>.</p></li>
+<li><p><a class="reference external" href="https://coderefinery.github.io/mini-workshop/2/documentation/">CodeRefinery mini-workshop</a></p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading"></a></h2>
+<div class="admonition-exercise-documentation-1-improve-the-readme-of-your-project exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise Documentation-1: Improve the README of your project</p>
+<p>In this exercise we will try to add a README to your project. If you have one
+already, we will try to improve it by using the checklist above.</p>
+<p>If you are unsure where to start, start with one of the checklist items in
+bold.</p>
+</div>
+<div class="admonition-exercise-documentation-2-in-code-documentation exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise Documentation-2: In-code documentation</p>
+<p>Have a look at the following examples and discuss which ones you find useful
+and which ones you find less useful and why.</p>
+<p>Example A:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># now we check if temperature is below -50</span>
+<span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: temperature is too low&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example B:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we regard temperatures below -50 degrees as measurement errors</span>
+<span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: temperature is too low&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Example C:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># do not run this code!</span>
+<span class="c1"># if temperature &gt; 0:</span>
+<span class="c1">#     print(&quot;It is warm&quot;)</span>
+</pre></div>
+</div>
+<p>Example D:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># John Doe: threshold changed from 0 to 15 on August 5, 2013</span>
+<span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It is warm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../version-control/" class="btn btn-neutral float-left" title="Version control and code review" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../reproducibility/" class="btn btn-neutral float-right" title="Reproducible dependencies and environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

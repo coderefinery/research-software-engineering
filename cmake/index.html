@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building code with CMake &mdash; Research software engineering (&#34;CodeRefinery in 1 hour&#34;)  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+
+  
+    <link rel="shortcut icon" href="../_static/coderefinery.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/minipres.js"></script>
+        <script src="../_static/tabs.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+        <script data-domain="coderefinery.github.io" defer="defer" src="https://plausible.cs.aalto.fi/js/script.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Sharing (licensing and publishing)" href="../sharing/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Research software engineering ("CodeRefinery in 1 hour")
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../example/">Example project: simulating the motion of planets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../version-control/">Version control and code review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reproducibility/">Reproducible dependencies and environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../automation/">Automation and reproducible workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing (licensing and publishing)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Older exercises</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Building code with CMake</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-cmake-1-compiling-hello-world-with-cmake">Exercise CMake-1: Compiling “Hello, world” with CMake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-cmake-2-building-and-linking-a-library">Exercise CMake-2: Building and linking a library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-cmake-3-detecting-your-environment">Exercise CMake-3: Detecting your environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-cmake-4-finding-and-using-dependencies">Exercise CMake-4: Finding and using dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-cmake-5-cmake-ify-your-own-project">Exercise CMake-5: CMake-ify your own project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-find-more-examples-and-exercises">Where to find more examples and exercises</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About CodeRefinery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/">CodeRefinery lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/reusing/">Reusing lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery project</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Research software engineering ("CodeRefinery in 1 hour")</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Building code with CMake</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/research-software-engineering/blob/main/content/cmake.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-code-with-cmake">
+<h1>Building code with CMake<a class="headerlink" href="#building-code-with-cmake" title="Permalink to this heading"></a></h1>
+<p>These exercises are adapted from the <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> lesson
+<a class="reference external" href="https://coderefinery.github.io/cmake-workshop/">“CMake introduction and hands-on workshop”</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running the examples below on
+<a class="reference external" href="https://www.pdc.kth.se/hpc-services/computing-systems/dardel-1.1043529">Dardel</a>?
+In this case you may need to load the <code class="docutils literal notranslate"><span class="pre">CMake</span></code> module:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>PDC<span class="w"> </span>CMake
+</pre></div>
+</div>
+</div>
+<section id="exercise-cmake-1-compiling-hello-world-with-cmake">
+<h2>Exercise CMake-1: Compiling “Hello, world” with CMake<a class="headerlink" href="#exercise-cmake-1-compiling-hello-world-with-cmake" title="Permalink to this heading"></a></h2>
+<p>In this exercise we will compile a single source file to an executable. Choose
+your favorite language.</p>
+<ol class="arabic simple">
+<li><p>Create a new folder and in the folder create a source file:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-0-Qw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Qw==" name="Qw==" role="tab" tabindex="-1">C</button><button aria-controls="panel-0-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-0-Qysr" class="sphinx-tabs-panel group-tab" id="panel-0-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>hello.cpp:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello world&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">say_hello</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-Qw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Qw==" name="Qw==" role="tabpanel" tabindex="0"><p>Use and adapt the C++ example.
+In terms of CMake, both are very similar.</p>
+</div><div aria-labelledby="tab-0-Rm9ydHJhbg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><p>hello.f90:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">pure function </span><span class="n">say_hello</span><span class="p">()</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">message</span>
+
+<span class="w">  </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hello world&#39;</span>
+
+<span class="k">end function</span>
+
+<span class="k">program </span><span class="n">example</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">say_hello</span>
+
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">say_hello</span><span class="p">()</span>
+
+<span class="k">end program</span>
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="2">
+<li><p>The folder contains only the source code. We need to add a file called
+<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> to it.  CMake reads the contents of these special files
+when generating the build system:</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-1-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-1-Qysr" class="sphinx-tabs-panel group-tab" id="panel-1-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">hello.cpp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Rm9ydHJhbg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">hello.f90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<ol class="arabic simple" start="3">
+<li><p>We are ready to call CMake and get our build system:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w"> </span>-S.<span class="w"> </span>-Bbuild
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>And finally build our executable:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w"> </span>--build<span class="w"> </span>build
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Try to also run the executable.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Instead of creating a build directory, configuring, and building implicitly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w"> </span>-S.<span class="w"> </span>-Bbuild
+<span class="gp">$ </span>cmake<span class="w"> </span>--build<span class="w"> </span>build
+</pre></div>
+</div>
+<p>… some people prefer to do this more explicitly (the build directory does not
+have to be called “build”):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>build
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>build
+<span class="gp">$ </span>cmake<span class="w"> </span>..
+<span class="gp">$ </span>make
+</pre></div>
+</div>
+<p>Both approaches will work for us.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-cmake-2-building-and-linking-a-library">
+<h2>Exercise CMake-2: Building and linking a library<a class="headerlink" href="#exercise-cmake-2-building-and-linking-a-library" title="Permalink to this heading"></a></h2>
+<p>Only rarely we have one-source-file projects and more realistically, as
+projects grow, we split them up into separate files. This simplifies
+(re)compilation but also helps humans maintaining and understanding the
+project.</p>
+<p>We stay with the toy project but also here things got more real and more
+modular and we decided to split the project up into several files:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-2-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-2-Qysr" class="sphinx-tabs-panel group-tab" id="panel-2-Qysr" name="Qysr" role="tabpanel" tabindex="0"><p>hello.cpp:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;greeting.hpp&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">say_hello</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>greeting.cpp:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;greeting.hpp&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello world&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>greeting.hpp:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">();</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Rm9ydHJhbg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><p>hello.f90:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">example</span>
+
+<span class="w">  </span><span class="k">use </span><span class="n">greeting</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">say_hello</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">say_hello</span><span class="p">()</span>
+
+<span class="k">end program</span>
+</pre></div>
+</div>
+<p>greeting.f90:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">greeting</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  public </span><span class="n">say_hello</span>
+
+<span class="w">  </span><span class="k">private</span>
+
+<span class="k">contains</span>
+
+<span class="k">  pure function </span><span class="n">say_hello</span><span class="p">()</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">message</span>
+
+<span class="w">    </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hello world&#39;</span>
+
+<span class="w">  </span><span class="k">end function</span>
+
+<span class="k">end module</span>
+</pre></div>
+</div>
+</div></div>
+<p><strong>Your first goal</strong>: try to build this by adapting the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> from
+earlier by first adding all the source files into the same <code class="docutils literal notranslate"><span class="pre">add_executable</span></code>.</p>
+<p>CMake can of course be used to produce libraries as well as executables.  The
+relevant command is <code class="docutils literal notranslate"><span class="pre">add_library</span></code>.  You can link libraries can be linked into
+other targets (executables or other libraries) with <code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code>.</p>
+<p><strong>Your second goal</strong>: now try to build a greeting library and link against this
+library instead of collecting all sources into the executable target:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-Qysr" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-3-Qysr" name="Qysr" role="tab" tabindex="0">C++</button><button aria-controls="panel-3-Rm9ydHJhbg==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-3-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tab" tabindex="-1">Fortran</button></div><div aria-labelledby="tab-3-Qysr" class="sphinx-tabs-panel group-tab" id="panel-3-Qysr" name="Qysr" role="tabpanel" tabindex="0"><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">hello.cpp</span><span class="p">)</span>
+
+<span class="nb">add_library</span><span class="p">(</span><span class="s">greeting</span>
+<span class="w">  </span><span class="s">SHARED</span>
+<span class="w">    </span><span class="s">greeting.cpp</span>
+<span class="w">    </span><span class="s">greeting.hpp</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">greeting</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-3-Rm9ydHJhbg==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-3-Rm9ydHJhbg==" name="Rm9ydHJhbg==" role="tabpanel" tabindex="0"><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">hello.f90</span><span class="p">)</span>
+
+<span class="nb">add_library</span><span class="p">(</span><span class="s">greeting</span>
+<span class="w">  </span><span class="s">SHARED</span>
+<span class="w">    </span><span class="s">greeting.f90</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">hello</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">greeting</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+<p>Which solution did you like better? Discuss the pros and cons.</p>
+</section>
+<hr class="docutils" />
+<section id="exercise-cmake-3-detecting-your-environment">
+<h2>Exercise CMake-3: Detecting your environment<a class="headerlink" href="#exercise-cmake-3-detecting-your-environment" title="Permalink to this heading"></a></h2>
+<p>Sometimes we need to write code that performs different operations based on
+compile-time constants.
+Like in this example (<code class="docutils literal notranslate"><span class="pre">example.cpp</span></code>):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#ifdef IS_WINDOWS</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Hello from Windows!&quot;</span><span class="p">);</span>
+<span class="cp">#elif IS_LINUX</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Hello from Linux!&quot;</span><span class="p">);</span>
+<span class="cp">#elif IS_MACOS</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Hello from macOS!&quot;</span><span class="p">);</span>
+<span class="cp">#else</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Hello from an unknown system!&quot;</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">say_hello</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can do this with the following <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># set minimum cmake version</span>
+<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="c"># project name and language</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="c"># define executable and its source file</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">example.cpp</span><span class="p">)</span>
+
+<span class="c"># let the preprocessor know about the system name</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_SYSTEM_NAME</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s2">&quot;Linux&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s2">&quot;IS_LINUX&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_SYSTEM_NAME</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s2">&quot;Darwin&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s2">&quot;IS_MACOS&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+<span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_SYSTEM_NAME</span><span class="w"> </span><span class="s">STREQUAL</span><span class="w"> </span><span class="s2">&quot;Windows&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">target_compile_definitions</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s2">&quot;IS_WINDOWS&quot;</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Please try it out</strong> before moving on.</p>
+<p>We achieved this with a combination of host system
+introspection and the <code class="docutils literal notranslate"><span class="pre">target_compile_definitions</span></code> command.</p>
+<p>Now before moving on, <strong>create a new directory</strong>.
+A common customization is to apply processor-specific compiler flags. We can
+gain such information on the host system with the built-in
+<code class="docutils literal notranslate"><span class="pre">cmake_host_system_information</span></code> command.</p>
+<p>Another thing that is common and convenient is to have a single file containing
+all these compile-time constants, rather than passing them to preprocessor.
+This can be achieved by having a <em>scaffold</em> file and then letting CMake
+configure it with <code class="docutils literal notranslate"><span class="pre">configure_file</span></code> after discovering the values for all the
+necessary compile-time constants.</p>
+<p>Here is an example source file (<code class="docutils literal notranslate"><span class="pre">example.cpp</span></code>):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;config.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Number of logical cores: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">NUMBER_OF_LOGICAL_CORES</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Number of physical cores: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">NUMBER_OF_PHYSICAL_CORES</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Processor is 64Bit: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">IS_64BIT</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Processor supports SSE2 instructions: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">HAS_SSE2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;OS name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">OS_NAME</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;OS sub-type: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">OS_RELEASE</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// we will add these two later:</span>
+<span class="w">  </span><span class="c1">// std::cout &lt;&lt; &quot;Compiler: &quot; &lt;&lt; COMPILER &lt;&lt; std::endl;</span>
+<span class="w">  </span><span class="c1">// std::cout &lt;&lt; &quot;Compiler version: &quot; &lt;&lt; COMPILER_VERSION &lt;&lt; std::endl;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The file <code class="docutils literal notranslate"><span class="pre">config.h</span></code> does not exist, it will be generated at configure time
+from <code class="docutils literal notranslate"><span class="pre">config-template.h</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#define NUMBER_OF_LOGICAL_CORES  @_NUMBER_OF_LOGICAL_CORES@</span>
+<span class="cp">#define NUMBER_OF_PHYSICAL_CORES @_NUMBER_OF_PHYSICAL_CORES@</span>
+<span class="cp">#define IS_64BIT                 @_IS_64BIT@</span>
+<span class="cp">#define HAS_SSE2                 @_HAS_SSE2@</span>
+<span class="cp">#define OS_NAME                 &quot;@_OS_NAME@&quot;</span>
+<span class="cp">#define OS_RELEASE              &quot;@_OS_RELEASE@&quot;</span>
+</pre></div>
+</div>
+<p>Here is the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> which takes care of introspection and also
+generates the file <code class="docutils literal notranslate"><span class="pre">config.h</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">CMakePrintHelpers</span><span class="p">)</span>
+
+<span class="nb">foreach</span><span class="p">(</span><span class="s">key</span>
+<span class="w">  </span><span class="s">IN</span><span class="w"> </span><span class="s">ITEMS</span>
+<span class="w">    </span><span class="s">NUMBER_OF_LOGICAL_CORES</span>
+<span class="w">    </span><span class="s">NUMBER_OF_PHYSICAL_CORES</span>
+<span class="w">    </span><span class="s">IS_64BIT</span>
+<span class="w">    </span><span class="s">HAS_SSE2</span>
+<span class="w">    </span><span class="s">OS_NAME</span>
+<span class="w">    </span><span class="s">OS_RELEASE</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="c"># query the item ${key} and save its value in the variable _${key}</span>
+<span class="w">  </span><span class="nb">cmake_host_system_information</span><span class="p">(</span><span class="s">RESULT</span><span class="w"> </span><span class="s">_</span><span class="o">${</span><span class="nv">key</span><span class="o">}</span><span class="w"> </span><span class="s">QUERY</span><span class="w"> </span><span class="o">${</span><span class="nv">key</span><span class="o">}</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">cmake_print_variables</span><span class="p">(</span><span class="s">_</span><span class="o">${</span><span class="nv">key</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">endforeach</span><span class="p">()</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">example.cpp</span><span class="p">)</span>
+
+<span class="c"># this is here because the config.h will be generated in PROJECT_BINARY_DIR</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">example</span>
+<span class="w">  </span><span class="s">PRIVATE</span>
+<span class="w">    </span><span class="o">${</span><span class="nv">PROJECT_BINARY_DIR</span><span class="o">}</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="hll"><span class="nb">configure_file</span><span class="p">(</span><span class="s">config-template.h</span><span class="w"> </span><span class="s">config.h</span><span class="w"> </span><span class="s">@ONLY</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Your goal is to adapt the above example
+and make it possible to get the compiler and compiler version into the
+output of your code:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;config.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Number of logical cores: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">NUMBER_OF_LOGICAL_CORES</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Number of physical cores: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">NUMBER_OF_PHYSICAL_CORES</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Processor is 64Bit: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">IS_64BIT</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Processor supports SSE2 instructions: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">HAS_SSE2</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;OS name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">OS_NAME</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;OS sub-type: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">OS_RELEASE</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// we will add these two later:</span>
+<span class="hll"><span class="w">  </span><span class="c1">// std::cout &lt;&lt; &quot;Compiler: &quot; &lt;&lt; COMPILER &lt;&lt; std::endl;</span>
+</span><span class="hll"><span class="w">  </span><span class="c1">// std::cout &lt;&lt; &quot;Compiler version: &quot; &lt;&lt; COMPILER_VERSION &lt;&lt; std::endl;</span>
+</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>You will only need to uncomment these and only have to modify <code class="docutils literal notranslate"><span class="pre">configure-template.h</span></code>.</p></li>
+<li><p>You will not need to modify <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.</p></li>
+<li><p>The relevant variable names are <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER_ID</span></code> and <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER_VERSION</span></code> (or replace <code class="docutils literal notranslate"><span class="pre">CXX</span></code> by <code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">Fortran</span></code>).</p></li>
+</ul>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#define NUMBER_OF_LOGICAL_CORES  @_NUMBER_OF_LOGICAL_CORES@</span>
+<span class="cp">#define NUMBER_OF_PHYSICAL_CORES @_NUMBER_OF_PHYSICAL_CORES@</span>
+<span class="cp">#define IS_64BIT                 @_IS_64BIT@</span>
+<span class="cp">#define HAS_SSE2                 @_HAS_SSE2@</span>
+<span class="cp">#define OS_NAME                 &quot;@_OS_NAME@&quot;</span>
+<span class="cp">#define OS_RELEASE              &quot;@_OS_RELEASE@&quot;</span>
+<span class="hll"><span class="cp">#define COMPILER                &quot;@CMAKE_CXX_COMPILER_ID@&quot;</span>
+</span><span class="hll"><span class="cp">#define COMPILER_VERSION        &quot;@CMAKE_CXX_COMPILER_VERSION@&quot;</span>
+</span></pre></div>
+</div>
+</div>
+<p><strong>What else to record when configuring?</strong> Here are some ideas:</p>
+<ul class="simple">
+<li><p>Code version and/or Git hash</p></li>
+<li><p>Compiler versions</p></li>
+<li><p>Compiler flags</p></li>
+<li><p>Compile-time definitions</p></li>
+<li><p>Library versions</p></li>
+<li><p>Some environment variables</p></li>
+</ul>
+<p>Discuss how they can be useful for you and others running your code.</p>
+</section>
+<hr class="docutils" />
+<section id="exercise-cmake-4-finding-and-using-dependencies">
+<h2>Exercise CMake-4: Finding and using dependencies<a class="headerlink" href="#exercise-cmake-4-finding-and-using-dependencies" title="Permalink to this heading"></a></h2>
+<p>CMake offers a family of commands to find artifacts installed on your system:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">find_file</span></code> to retrieve the full path to a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_library</span></code> to find a library, shared or static.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_package</span></code> to find and load settings from an external project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_path</span></code> to find the directory containing a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_program</span></code> to find an executable.</p></li>
+</ul>
+<p>For this exercise, choose one of the examples below which is closest to your
+work and most relevant for your code.</p>
+<ol class="arabic simple">
+<li><p>Try to compile and run.</p></li>
+<li><p>Browse the online documentation of the <code class="docutils literal notranslate"><span class="pre">Find&lt;PackageName&gt;.cmake</span></code> module (e.g. <code class="docutils literal notranslate"><span class="pre">FindOpenMP.cmake</span></code>).</p></li>
+<li><p>Try to compile with verbosity (<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span> <span class="pre">build</span> <span class="pre">--</span> <span class="pre">VERBOSE=1</span></code>) and verify how the imported target modified
+compile flags and definitions.</p></li>
+<li><p><strong>Bonus</strong>: Try to adapt what we learned to an example which uses the BLAS or
+LAPACK library or your favorite library.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running the examples below on
+<a class="reference external" href="https://www.pdc.kth.se/hpc-services/computing-systems/dardel-1.1043529">Dardel</a>?
+In this case you may need to load the <code class="docutils literal notranslate"><span class="pre">PrgEnv-gnu</span></code> module:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>PrgEnv-gnu
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-T3Blbk1QIChDKysp" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-4-T3Blbk1QIChDKysp" name="T3Blbk1QIChDKysp" role="tab" tabindex="0">OpenMP (C++)</button><button aria-controls="panel-4-T3Blbk1QIChGb3J0cmFuKQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-T3Blbk1QIChGb3J0cmFuKQ==" name="T3Blbk1QIChGb3J0cmFuKQ==" role="tab" tabindex="-1">OpenMP (Fortran)</button><button aria-controls="panel-4-TVBJIChDKysp" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-TVBJIChDKysp" name="TVBJIChDKysp" role="tab" tabindex="-1">MPI (C++)</button><button aria-controls="panel-4-TVBJIChGb3J0cmFuKQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-4-TVBJIChGb3J0cmFuKQ==" name="TVBJIChGb3J0cmFuKQ==" role="tab" tabindex="-1">MPI (Fortran)</button></div><div aria-labelledby="tab-4-T3Blbk1QIChDKysp" class="sphinx-tabs-panel group-tab" id="panel-4-T3Blbk1QIChDKysp" name="T3Blbk1QIChDKysp" role="tabpanel" tabindex="0"><p>Source file (<code class="docutils literal notranslate"><span class="pre">example.cpp</span></code>):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdlib&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;omp.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="cp">#pragma omp parallel</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;hello from thread &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">example.cpp</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">OpenMP</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">OpenMP::OpenMP_CXX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-T3Blbk1QIChGb3J0cmFuKQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-T3Blbk1QIChGb3J0cmFuKQ==" name="T3Blbk1QIChGb3J0cmFuKQ==" role="tabpanel" tabindex="0"><p>Source file (<code class="docutils literal notranslate"><span class="pre">example.f90</span></code>):</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">example</span>
+<span class="w">  </span><span class="k">use </span><span class="n">omp_lib</span>
+
+<span class="c">!$OMP PARALLEL</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello from thread &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">omp_get_thread_num</span><span class="p">()</span>
+<span class="c">!$OMP END PARALLEL</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">example.f90</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">OpenMP</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">OpenMP::OpenMP_Fortran</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-TVBJIChDKysp" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-TVBJIChDKysp" name="TVBJIChDKysp" role="tabpanel" tabindex="0"><p>Source file (<code class="docutils literal notranslate"><span class="pre">example.cpp</span></code>):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;hello from rank &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">C</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">example.cpp</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">MPI</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">C</span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">MPI::MPI_C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-TVBJIChGb3J0cmFuKQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-4-TVBJIChGb3J0cmFuKQ==" name="TVBJIChGb3J0cmFuKQ==" role="tabpanel" tabindex="0"><p>Source file (<code class="docutils literal notranslate"><span class="pre">example.f90</span></code>):</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">example</span>
+<span class="w">  </span><span class="k">use </span><span class="n">mpi</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">error</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">id</span>
+
+<span class="w">  </span><span class="k">call </span><span class="n">MPI_Init</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="w">  </span><span class="k">call </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello from rank &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">id</span>
+
+<span class="w">  </span><span class="k">call </span><span class="n">MPI_Finalize</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="k">end program</span>
+</pre></div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.14</span><span class="p">)</span>
+
+<span class="nb">project</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">example.f90</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">MPI</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">Fortran</span><span class="p">)</span>
+
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">example</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">MPI::MPI_Fortran</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<hr class="docutils" />
+<section id="exercise-cmake-5-cmake-ify-your-own-project">
+<h2>Exercise CMake-5: CMake-ify your own project<a class="headerlink" href="#exercise-cmake-5-cmake-ify-your-own-project" title="Permalink to this heading"></a></h2>
+<p>This may not be easy and you will probably need help from a TA or the
+instructor but is a great exercise and we can try to do this together.  You can
+find good tips in <a class="reference external" href="https://coderefinery.github.io/cmake-workshop/">“CMake introduction and hands-on
+workshop”</a>.</p>
+</section>
+<hr class="docutils" />
+<section id="where-to-find-more-examples-and-exercises">
+<h2>Where to find more examples and exercises<a class="headerlink" href="#where-to-find-more-examples-and-exercises" title="Permalink to this heading"></a></h2>
+<p>Curious about more CMake? As a next step, we recommend to work through the
+<a class="reference external" href="https://coderefinery.github.io/cmake-workshop/">“CMake introduction and hands-on workshop”</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../sharing/" class="btn btn-neutral float-left" title="Sharing (licensing and publishing)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
