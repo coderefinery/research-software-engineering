@@ -17,10 +17,11 @@ sharing
 ```
 
 :::{admonition} Choose your own adventure
-There are too many exercises here to complete in 1.5 hours. Please start with
-the ones that are **most relevant to you and your work** and try to complete
-one or two topics. If you have time, you can continue with the remaining
-exercises. If you have the possibility to work in pairs, please do so.
+Each episode has exercises or something to think about.  There are too many
+exercises to complete in 1.5 hours. Please start with the ones that are **most
+relevant to you and your work** and try to complete one or two topics. If you
+have time, you can continue with the remaining exercises. If you have the
+possibility to work in pairs, please do so.
 :::
 
 ```{toctree}

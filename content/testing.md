@@ -1,8 +1,8 @@
 # Testing
 
 :::{objectives}
-- Know where to start in your own project.
-- Have an example for how to make the testing part of code review.
+- Know **where to start** in your own project.
+- Have an example for how to make the **testing part of code review**.
 :::
 
 
@@ -14,12 +14,12 @@ Testing is a way to check that the code does what it is expected to.
 - **Easier for new people** to join.
 - Easier for somebody to **revive an old code**.
 - **End-to-end test**: run the whole code and compare result to a reference.
-- Unit tests can **guide towards better structured code**: complicated code is more difficult to test.
+- **Unit tests** can guide towards better structured code: complicated code is more difficult to test.
 
 
 ## Where to start
 
-Shorter answer: **Start with an end-to-end test**.
+Short answer: **Start with an end-to-end test**.
 
 :::{solution} Longer answer
 - A simple script or notebook probably does not need an automated test.
@@ -27,7 +27,7 @@ Shorter answer: **Start with an end-to-end test**.
 **If you have nothing yet**:
 - Start with an end-to-end test.
 - Describe in words how *you* check whether the code still works.
-- Translate the words into a script.
+- Translate the words into a script (any language).
 - Run the script automatically on every code change.
 
 **If you want to start with unit-testing**:
@@ -60,7 +60,7 @@ perfect? No. But it's a good starting point. Discuss its limitations.
 Try this process on your own code or a code that you have
 recently used:
 1. Describe in words how *you* check whether the code still works.
-1. Translate the words into a script.
+1. Translate the words into a script (any language).
 1. Run the script automatically on every code change.
 
 Already step 1 is a good exercise in itself.  If you can arrive at step 2,
@@ -125,7 +125,8 @@ $ pytest simulate.py
 ```
 
 If you want GitHub to run it, we need to extend
-[.github/workflows/test.yml](https://github.com/coderefinery/planets/blob/main/.github/workflows/test.yml):
+[.github/workflows/test.yml](https://github.com/coderefinery/planets/blob/main/.github/workflows/test.yml)
+(highlighted line):
 ```{code-block} yaml
 ---
 emphasize-lines: 29

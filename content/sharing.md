@@ -11,14 +11,18 @@
 
 ## Why software licenses matter
 
-- We often want or need to make changes to other people's code.
+- We often want or need to make changes to other people's code,
   or we want other people to be able to make changes to our code.
-- Without a license the derivative work **cannot be distributed** or
+- Without a license the **derivative work** cannot be distributed or
   published.
-- You want to be able to use and change your own code in your next job.
+- Maybe you want to be able to use and change your own code in your next job?
 
 
 ## Taxonomy of software licenses
+
+If you don't have a license, your code is in the red area
+in this picture and others cannot mix it with their code.
+Arrows represent compatibility (A -> B: B can reuse A).
 
 :::{figure} img/license-models.png
 :alt: "European Union Public Licence (EUPL): guidelines July 2021"
@@ -26,8 +30,10 @@
 European Commission, Directorate-General for Informatics, Schmitz, P.,
 European Union Public Licence (EUPL): guidelines July 2021, Publications
 Office, 2021, <https://data.europa.eu/doi/10.2799/77160>.
-Arrows represent compatibility (A -> B: B can reuse A).
 :::
+
+**Choose a standard license**.
+Don't design your own otherwise compatibility won't be clear.
 
 **Great resources**:
 - [Joinup Licensing Assistant](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses)
@@ -57,7 +63,7 @@ Arrows represent compatibility (A -> B: B can reuse A).
    - [Web form to create, edit, and validate CITATION.cff files](https://citation-file-format.github.io/cff-initializer-javascript/)
    - [Video: "How to create a CITATION.cff using cffinit"](https://www.youtube.com/watch?v=zcgLIT5Qd4M)
 
-3. We will make our persistent and citable following
+3. We can make our code persistent and citable following
    [these steps](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content).
 
 
@@ -87,10 +93,10 @@ the "real" Zenodo, since we are only practicing. On the "real" Zenodo a record
 with a DOI cannot be deleted (this is the point of making it persistent).
 
 How to get a DOI using the [Zenodo sandbox](https://sandbox.zenodo.org):
-- We will log into the [Zenodo sandbox](https://sandbox.zenodo.org) using
+- Log into the [Zenodo sandbox](https://sandbox.zenodo.org) using
   GitHub.
-- We will follow [these steps](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)
-  and finally create a GitHub release and get a DOI.
+- Follow [these steps](https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content)
+  to create a GitHub release and get a DOI.
 :::
 
 :::{exercise} Exercise Sharing-3: What constitutes derivative work?

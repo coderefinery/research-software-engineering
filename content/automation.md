@@ -67,8 +67,6 @@ What is good about the shell script solution:
 - It documents what steps are taken.
 - Relatively simple.
 - Good solution if you only need to run this once or if it takes no time.
-- What if separate steps need different resources (e.g., memory, CPU)
-  or environments (e.g., different Python versions)?
 
 Problems:
 - Independent calculations are run one after the other.
@@ -76,8 +74,10 @@ Problems:
   lines.
 - If you find a mistake in one of the scripts, we again need to re-run
   everything or start commenting out lines.
+- What if separate steps need different resources (e.g., memory, CPU)
+  or environments (e.g., different Python versions)?
 
-In this situation we need a **workflow**.
+In this situation we need a **workflow/pipeline** management tool.
 :::
 ::::
 
@@ -86,4 +86,5 @@ In this situation we need a **workflow**.
 
 - [Snakemake](https://snakemake.github.io/)
 - [Nextflow](https://www.nextflow.io/)
-- There are many more tools and frameworks. **Do not invent your own!**
+- There are many more workflow/pipeline
+  tools and frameworks. **Do not invent your own!**

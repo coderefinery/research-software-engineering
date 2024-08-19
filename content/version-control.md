@@ -2,7 +2,8 @@
 
 :::{objectives}
 - Browse **commits** and **branches** of a Git repository.
-- Remember that commits are like snapshots of the repository at a certain point in time.
+- Remember that commits are like **snapshots** of the repository at a certain
+  point in time.
 - Know the difference between **Git** (something that tracks changes) and
   **GitHub/GitLab** (a platform to host Git repositories).
 :::

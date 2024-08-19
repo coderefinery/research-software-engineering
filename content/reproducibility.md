@@ -1,5 +1,11 @@
 # Reproducible dependencies and environments
 
+:::{objectives}
+There are not many codes that have no dependencies.
+How should we **deal with dependencies**?
+:::
+
+
 ## How to avoid: "It works on my machine &#129335;"
 
 Use a **standard way** to list dependencies in your project:
@@ -9,6 +15,7 @@ Use a **standard way** to list dependencies in your project:
 - Julia: `Project.toml`
 - C/C++/Fortran: `CMakeLists.txt` or `Makefile` or `spack.yaml` or the module
   system on clusters or containers
+- Other languages: ...
 
 Install dependencies into **isolated environments**:
 - For each project, create a new environment.
@@ -29,17 +36,20 @@ able to answer this question **with a file**.
    file.
 
    :::{discussion}
-   Shouldn't the dependencies in the
-   [environment.yml](https://github.com/coderefinery/planets/blob/main/environment.yml)
-   file be pinned to specific versions?
+   - Shouldn't the dependencies in the
+     [environment.yml](https://github.com/coderefinery/planets/blob/main/environment.yml)
+     file be pinned to specific versions?
+   - When is a good time to pin them?
    :::
 
 2. We also have a [container definition
    file](https://github.com/coderefinery/planets/blob/main/container.def):
    - This can be used with [Apptainer](https://apptainer.org/)/
      [SingularityCE](https://sylabs.io/singularity/).
-   - A container is like an operating system inside a file.
+   - A container is like an **operating system inside a file**.
    - If we have the time, we can try Exercise Reproducibility-3 below.
+   - This is a simple example. It is possible but trickier to
+     do MPI and/or GPU computing using containers.
 
 
 ## Where to explore more
@@ -324,12 +334,12 @@ Here we will try to build a container from
 of our example project.
 
 Requirements:
-1. An installation of [Apptainer](https://apptainer.org/) (e.g. following the
+1. Linux (it is possible to build them on a macOS or Windows computer but it is
+   more complicated).
+2. An installation of [Apptainer](https://apptainer.org/) (e.g. following the
    [quick installation](https://apptainer.org/docs/user/latest/quick_start.html#quick-installation)).
    Alternatively, [SingularityCE](https://sylabs.io/singularity/) should also
    work.
-2. Linux (it is possible to build them on a macOS or Windows computer but it is
-   more complicated).
 
 Now you can build the container image from the container definition file.
 Depending on the configuration you might need to run the command with `sudo`

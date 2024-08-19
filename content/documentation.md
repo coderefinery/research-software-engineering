@@ -1,14 +1,15 @@
 # Documentation
 
 :::{objectives}
-- Understand why documentation needs to be kept
-  **in the same Git repository** as the code.
 - Improve the README of your project or our example project.
 :::
 
 :::{keypoints}
 - Often a README is enough.
 - Documentation which is only in the source code is not enough.
+- Documentation needs to be kept
+  **in the same Git repository** as the code.
+  It evolves [with the code](https://github.com/coderefinery/planets/network).
 :::
 
 
@@ -54,6 +55,7 @@ See also the
 
 - Use one of many tools to build HTML out of md/rst/Rmd:
   [Sphinx](https://sphinx-doc.org),
+  [MkDocs](https://www.mkdocs.org/),
   [Zola](https://www.getzola.org/), [Jekyll](https://jekyllrb.com/),
   [Hugo](https://gohugo.io/), RStudio, [knitr](https://yihui.org/knitr/),
   [bookdown](https://bookdown.org/),
@@ -68,7 +70,7 @@ See also the
 - [Documentation lesson material](https://coderefinery.github.io/documentation/)
 - [Talk material "Documenting code" by S. Wittke](https://github.com/samumantha/documentation_example)
 - Inside Sphinx we can add tables, images, equations, code snippets, ... ([more information](https://coderefinery.github.io/documentation/sphinx/#exercise-adding-more-sphinx-content).
-- [CodeRefinery mini-workshop](https://coderefinery.github.io/mini-workshop/)
+- [CodeRefinery mini-workshop](https://coderefinery.github.io/mini-workshop/2/documentation/)
 
 
 ## Exercises
@@ -76,14 +78,15 @@ See also the
 :::{exercise} Exercise Documentation-1: Improve the README of your project
 
 In this exercise we will try to add a README to your project. If you have one
-already, we will try to improve it by following the checklist (above).
+already, we will try to improve it by using the checklist above.
 
-If you are unsure where to start, start with one of the items in bold.
+If you are unsure where to start, start with one of the checklist items in
+bold.
 :::
 
 :::{exercise} Exercise Documentation-2: In-code documentation
 
-Have a look at the following 4 examples and discuss which ones you find useful
+Have a look at the following examples and discuss which ones you find useful
 and which ones you find less useful and why.
 
 Example A:
